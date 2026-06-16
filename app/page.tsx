@@ -3,7 +3,6 @@ import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 
 const EVENT = {
-  name: 'นิทรรศการภาพถ่าย Pensieve',
   sub: 'อ่างแห่งความทรงจำ',
   date: '...',
   venue: '...',
@@ -11,10 +10,10 @@ const EVENT = {
 };
 
 const HOUSES = [
-  { id: 'gryffindor', name: 'Gryffindor', thai: 'กริฟฟินดอร์', bg: '#7F0909', accent: '#FFC500', icon: '🦁', textColor: '#FFC500', logo: '/Photo_Club/logo_Gryffindor.png' },
-  { id: 'hufflepuff', name: 'Hufflepuff', thai: 'ฮัฟเฟิลพัฟ', bg: '#F0C500', accent: '#372E29', icon: '🦡', textColor: '#372E29', logo: '/Photo_Club/logo_Hufflepuff.png' },
-  { id: 'ravenclaw', name: 'Ravenclaw', thai: 'เรเวนคลอว์', bg: '#0E1A40', accent: '#946B2D', icon: '🦅', textColor: '#A89060', logo: '/Photo_Club/logo_Ravenclaw.png' },
-  { id: 'slytherin', name: 'Slytherin', thai: 'สลิธีริน', bg: '#1A472A', accent: '#AAAAAA', icon: '🐍', textColor: '#AAAAAA', logo: '/Photo_Club/logo_Slytherin.png' },
+  { id: 'gryffindor', name: 'Gryffindor', thai: 'กริฟฟินดอร์', bg: '#7F0909', accent: '#FFC500', textColor: '#FFC500', logo: '/Photo_Club/logo_Gryffindor.png' },
+  { id: 'hufflepuff', name: 'Hufflepuff', thai: 'ฮัฟเฟิลพัฟ', bg: '#C49A00', accent: '#372E29', textColor: '#1a1208', logo: '/Photo_Club/logo_Hufflepuff.png' },
+  { id: 'ravenclaw', name: 'Ravenclaw', thai: 'เรเวนคลอว์', bg: '#0E1A40', accent: '#946B2D', textColor: '#A89060', logo: '/Photo_Club/logo_Ravenclaw.png' },
+  { id: 'slytherin', name: 'Slytherin', thai: 'สลิธีริน', bg: '#1A472A', accent: '#AAAAAA', textColor: '#CCCCCC', logo: '/Photo_Club/logo_Slytherin.png' },
 ];
 
 const YEARS = ['ปี 1','ปี 2','ปี 3','ปี 4','ปี 5','ปี 6','ปี 7'];
@@ -37,7 +36,7 @@ export default function HomePage() {
     const payload = {
       name: name.trim(), house: h.id, houseName: h.name, houseThai: h.thai,
       houseAccent: h.accent, houseBg: h.bg, houseTextColor: h.textColor,
-      houseIcon: h.icon, year, letter: letter.trim(),
+      houseIcon: '', year, letter: letter.trim(),
     };
     setSubmitting(true);
     setError('');
@@ -58,8 +57,12 @@ export default function HomePage() {
         @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;500;600&family=Noto+Serif+Thai:wght@300;400;500;600&display=swap');
         *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
         body{background:#080604;font-family:'Noto Serif Thai',serif;color:#f0ebe0;min-height:100dvh;}
-        input{font-family:'Noto Serif Thai',serif;}
-        .page{min-height:100dvh;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;padding:32px 16px 60px;}
+        input,select{font-family:'Noto Serif Thai',serif;}
+
+        /* PAGE */
+        .page{min-height:100dvh;position:relative;overflow:hidden;display:flex;flex-direction:column;align-items:center;padding:28px 16px 60px;}
+
+        /* BG */
         .bg{position:fixed;inset:0;z-index:0;}
         .bg-img{width:100%;height:100%;object-fit:cover;opacity:.25;}
         .bg-overlay{position:absolute;inset:0;
@@ -67,8 +70,7 @@ export default function HomePage() {
             radial-gradient(ellipse at 50% -10%,rgba(120,60,5,.7) 0%,transparent 55%),
             radial-gradient(ellipse at 20% 80%,rgba(80,30,0,.4) 0%,transparent 40%),
             radial-gradient(ellipse at 80% 90%,rgba(60,20,0,.4) 0%,transparent 40%),
-            linear-gradient(180deg,#0a0500 0%,#060402 50%,#0a0500 100%);
-        }
+            linear-gradient(180deg,#0a0500 0%,#060402 50%,#0a0500 100%);}
         .bg-vignette{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,transparent 40%,rgba(0,0,0,.7) 100%);}
         .stars{position:absolute;inset:0;overflow:hidden;}
         .stars::before,.stars::after{content:'';position:absolute;inset:0;background-image:
@@ -78,80 +80,125 @@ export default function HomePage() {
           radial-gradient(1px 1px at 55% 45%,rgba(255,255,255,.3) 0%,transparent 100%),
           radial-gradient(1px 1px at 70% 20%,rgba(201,162,39,.6) 0%,transparent 100%),
           radial-gradient(1px 1px at 85% 60%,rgba(255,255,255,.4) 0%,transparent 100%),
-          radial-gradient(1px 1px at 15% 70%,rgba(201,162,39,.4) 0%,transparent 100%),
-          radial-gradient(1px 1px at 30% 85%,rgba(255,255,255,.3) 0%,transparent 100%),
-          radial-gradient(1px 1px at 60% 75%,rgba(201,162,39,.5) 0%,transparent 100%),
-          radial-gradient(1px 1px at 90% 40%,rgba(255,255,255,.4) 0%,transparent 100%),
           radial-gradient(1.5px 1.5px at 5% 50%,rgba(201,162,39,.7) 0%,transparent 100%),
-          radial-gradient(1.5px 1.5px at 45% 65%,rgba(255,220,100,.5) 0%,transparent 100%),
-          radial-gradient(1.5px 1.5px at 75% 5%,rgba(201,162,39,.6) 0%,transparent 100%),
-          radial-gradient(1px 1px at 95% 80%,rgba(255,255,255,.3) 0%,transparent 100%),
-          radial-gradient(1px 1px at 50% 90%,rgba(201,162,39,.4) 0%,transparent 100%);
+          radial-gradient(1.5px 1.5px at 75% 5%,rgba(201,162,39,.6) 0%,transparent 100%);
           animation:twinkle 4s ease-in-out infinite alternate;}
         .stars::after{background-image:
           radial-gradient(1px 1px at 18% 25%,rgba(201,162,39,.5) 0%,transparent 100%),
-          radial-gradient(1px 1px at 33% 55%,rgba(255,255,255,.35) 0%,transparent 100%),
           radial-gradient(1px 1px at 62% 30%,rgba(201,162,39,.6) 0%,transparent 100%),
-          radial-gradient(1px 1px at 78% 70%,rgba(255,255,255,.4) 0%,transparent 100%),
           radial-gradient(1.5px 1.5px at 88% 15%,rgba(201,162,39,.7) 0%,transparent 100%),
-          radial-gradient(1px 1px at 7% 88%,rgba(255,255,255,.3) 0%,transparent 100%),
-          radial-gradient(1px 1px at 52% 12%,rgba(201,162,39,.5) 0%,transparent 100%),
           radial-gradient(1px 1px at 42% 95%,rgba(255,220,100,.4) 0%,transparent 100%);
           animation:twinkle 6s ease-in-out infinite alternate-reverse;}
         @keyframes twinkle{0%{opacity:.6;}100%{opacity:1;}}
         .particles{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
         .p{position:absolute;bottom:-10px;width:3px;height:3px;border-radius:50%;background:rgba(201,162,39,.8);animation:rise linear infinite;}
         .p:nth-child(1){left:5%;animation-duration:9s;animation-delay:0s;width:2px;height:2px;}
-        .p:nth-child(2){left:12%;animation-duration:12s;animation-delay:2s;background:rgba(255,220,100,.6);}
-        .p:nth-child(3){left:22%;animation-duration:8s;animation-delay:4s;width:2px;height:2px;}
-        .p:nth-child(4){left:35%;animation-duration:11s;animation-delay:1s;}
-        .p:nth-child(5){left:47%;animation-duration:10s;animation-delay:3s;width:4px;height:4px;background:rgba(255,220,100,.5);}
-        .p:nth-child(6){left:58%;animation-duration:9s;animation-delay:5s;width:2px;height:2px;}
-        .p:nth-child(7){left:68%;animation-duration:13s;animation-delay:0.5s;}
-        .p:nth-child(8){left:78%;animation-duration:8s;animation-delay:3.5s;background:rgba(255,220,100,.7);}
-        .p:nth-child(9){left:88%;animation-duration:11s;animation-delay:2.5s;width:2px;height:2px;}
-        .p:nth-child(10){left:95%;animation-duration:10s;animation-delay:6s;}
-        .p:nth-child(11){left:30%;animation-duration:14s;animation-delay:1.5s;width:2px;height:2px;}
-        .p:nth-child(12){left:72%;animation-duration:9s;animation-delay:7s;background:rgba(255,220,100,.6);}
-        @keyframes rise{0%{transform:translateY(0) scale(1);opacity:0;}10%{opacity:.8;}80%{opacity:.4;}100%{transform:translateY(-100vh) scale(0.3);opacity:0;}}
-        .content{position:relative;z-index:1;width:100%;max-width:480px;display:flex;flex-direction:column;align-items:center;}
-        .logo{width:110px;height:110px;object-fit:contain;filter:drop-shadow(0 0 16px rgba(201,162,39,.5));margin-bottom:8px;}
-        .presents{font-family:'Cinzel',serif;font-size:10px;letter-spacing:4px;color:#c9a227;opacity:.8;margin-bottom:8px;}
+        .p:nth-child(2){left:15%;animation-duration:12s;animation-delay:2s;background:rgba(255,220,100,.6);}
+        .p:nth-child(3){left:28%;animation-duration:8s;animation-delay:4s;width:2px;height:2px;}
+        .p:nth-child(4){left:42%;animation-duration:11s;animation-delay:1s;}
+        .p:nth-child(5){left:58%;animation-duration:10s;animation-delay:3s;width:4px;height:4px;background:rgba(255,220,100,.5);}
+        .p:nth-child(6){left:72%;animation-duration:9s;animation-delay:5s;width:2px;height:2px;}
+        .p:nth-child(7){left:85%;animation-duration:13s;animation-delay:0.5s;}
+        .p:nth-child(8){left:95%;animation-duration:8s;animation-delay:3.5s;}
+        @keyframes rise{0%{transform:translateY(0);opacity:0;}10%{opacity:.8;}80%{opacity:.4;}100%{transform:translateY(-100vh);opacity:0;}}
+
+        /* HEADER */
+        .content{position:relative;z-index:1;width:100%;max-width:500px;display:flex;flex-direction:column;align-items:center;}
+        .logo{width:100px;height:100px;object-fit:contain;filter:drop-shadow(0 0 16px rgba(201,162,39,.5));margin-bottom:8px;}
+        .presents{font-family:'Cinzel',serif;font-size:9px;letter-spacing:5px;color:#c9a227;opacity:.8;margin-bottom:8px;}
         .deco-line{display:flex;align-items:center;gap:8px;width:200px;margin:0 auto 8px;}
         .deco-line-bar{flex:1;height:1px;background:linear-gradient(90deg,transparent,#c9a227,transparent);}
-        .deco-line-diamond{font-size:10px;color:#c9a227;opacity:.8;flex-shrink:0;}
-        .event-type{font-family:'Noto Serif Thai',serif;font-size:12px;color:#c9a227;opacity:.75;letter-spacing:3px;margin-bottom:4px;}
-        .event-title{font-family:'Cinzel Decorative',serif;font-size:24px;font-weight:700;color:#c9a227;text-align:center;line-height:1.15;text-shadow:0 0 30px rgba(201,162,39,.4);margin-bottom:4px;}
-        .event-sub{font-family:'Noto Serif Thai',serif;font-size:15px;color:#c9a227;opacity:.8;text-align:center;letter-spacing:3px;margin-bottom:6px;}
-        .gold-line{width:180px;height:1px;background:linear-gradient(90deg,transparent,#c9a227,transparent);margin:10px auto 6px;}
-        .event-meta{font-size:12px;color:#a08060;text-align:center;letter-spacing:1px;margin-bottom:24px;line-height:1.8;}
-        .form-card{width:100%;background:rgba(10,7,4,.75);border:1px solid rgba(201,162,39,.4);border-radius:16px;padding:24px 20px;backdrop-filter:blur(12px);box-shadow:0 8px 48px rgba(0,0,0,.7),0 0 80px rgba(120,70,0,.2),inset 0 0 0 1px rgba(201,162,39,.1);animation:cardGlow 4s ease-in-out infinite alternate;}
-        @keyframes cardGlow{0%{box-shadow:0 8px 48px rgba(0,0,0,.7),0 0 40px rgba(120,70,0,.15),inset 0 0 0 1px rgba(201,162,39,.1);}100%{box-shadow:0 8px 48px rgba(0,0,0,.7),0 0 100px rgba(180,110,0,.3),inset 0 0 0 1px rgba(201,162,39,.15);}}
-        .field{margin-bottom:18px;}
-        .field-label{font-size:12px;color:#c9a227;letter-spacing:2px;margin-bottom:8px;display:block;font-family:'Cinzel',serif;}
-        .field input{width:100%;background:rgba(255,255,255,.04);border:1px solid rgba(201,162,39,.3);border-radius:10px;padding:12px 14px;color:#f0ebe0;font-size:14px;outline:none;transition:border-color .2s;}
-        .field input:focus{border-color:#c9a227;box-shadow:0 0 0 2px rgba(201,162,39,.1);}
-        .field input::placeholder{color:#5a4a3a;}
-        .houses{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-        .house-btn{border:2px solid transparent;border-radius:12px;padding:12px 10px;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:5px;transition:all .2s;opacity:.6;}
-        .house-btn.selected{opacity:1;border-color:currentColor;box-shadow:0 0 16px rgba(255,255,255,.15);}
-        .house-btn:not(.selected):hover{opacity:.85;}
-        .house-icon{font-size:22px;}
-        .house-logo{width:48px;height:48px;object-fit:contain;}
-        .house-name{font-family:'Cinzel',serif;font-size:10px;font-weight:600;letter-spacing:1px;}
-        .house-thai{font-size:11px;opacity:.8;}
-        .years{display:grid;grid-template-columns:repeat(7,1fr);gap:6px;}
-        .year-btn{border:1px solid rgba(201,162,39,.3);border-radius:8px;padding:8px 0;cursor:pointer;background:rgba(255,255,255,.03);color:#a08060;font-size:12px;font-family:'Noto Serif Thai',serif;transition:all .2s;text-align:center;}
-        .year-btn.selected{background:rgba(201,162,39,.15);border-color:#c9a227;color:#f0d060;}
-        .year-btn:hover:not(.selected){border-color:rgba(201,162,39,.5);color:#c9a227;}
-        .error{color:#e87070;font-size:12px;text-align:center;margin-top:8px;background:rgba(180,40,40,.12);border-radius:8px;padding:8px;}
-        .submit-btn{width:100%;padding:15px;margin-top:20px;background:linear-gradient(135deg,#6b3a0a,#c9a227 50%,#6b3a0a);border:none;border-radius:12px;color:#0a0600;font-size:15px;font-family:'Cinzel',serif;font-weight:600;letter-spacing:2px;cursor:pointer;transition:opacity .2s;box-shadow:0 4px 20px rgba(201,162,39,.3);}
-        .submit-btn:hover{opacity:.9;}
-        .deco-corner{position:absolute;width:20px;height:20px;border-color:#c9a227;border-style:solid;opacity:.5;}
-        .deco-tl{top:8px;left:8px;border-width:2px 0 0 2px;}
-        .deco-tr{top:8px;right:8px;border-width:2px 2px 0 0;}
-        .deco-bl{bottom:8px;left:8px;border-width:0 0 2px 2px;}
-        .deco-br{bottom:8px;right:8px;border-width:0 2px 2px 0;}
+        .deco-gem{font-size:10px;color:#c9a227;opacity:.8;}
+        .event-type{font-size:11px;color:rgba(201,162,39,.7);letter-spacing:4px;margin-bottom:3px;}
+        .event-title{font-family:'Cinzel Decorative',serif;font-size:26px;font-weight:700;color:#c9a227;text-align:center;line-height:1.1;text-shadow:0 0 30px rgba(201,162,39,.5);margin-bottom:3px;}
+        .event-sub{font-size:13px;color:rgba(201,162,39,.75);letter-spacing:3px;margin-bottom:6px;}
+        .gold-line{width:180px;height:1px;background:linear-gradient(90deg,transparent,#c9a227,transparent);margin:8px auto;}
+        .event-meta{font-size:11px;color:#a08060;text-align:center;letter-spacing:1px;margin-bottom:20px;line-height:1.9;}
+
+        /* CARD */
+        .form-card{
+          width:100%;
+          background:rgba(8,5,2,.8);
+          border:1px solid rgba(201,162,39,.4);
+          border-radius:16px;
+          padding:20px 18px 22px;
+          backdrop-filter:blur(14px);
+          position:relative;
+          animation:cardGlow 4s ease-in-out infinite alternate;
+        }
+        @keyframes cardGlow{
+          0%{box-shadow:0 8px 40px rgba(0,0,0,.7),0 0 40px rgba(120,70,0,.1);}
+          100%{box-shadow:0 8px 40px rgba(0,0,0,.7),0 0 80px rgba(180,110,0,.25);}
+        }
+        .deco-c{position:absolute;width:18px;height:18px;border-color:#c9a227;border-style:solid;opacity:.6;}
+        .dc-tl{top:8px;left:8px;border-width:2px 0 0 2px;}
+        .dc-tr{top:8px;right:8px;border-width:2px 2px 0 0;}
+        .dc-bl{bottom:8px;left:8px;border-width:0 0 2px 2px;}
+        .dc-br{bottom:8px;right:8px;border-width:0 2px 2px 0;}
+
+        /* NAME INPUT */
+        .name-field{margin-bottom:14px;}
+        .flabel{font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;color:rgba(201,162,39,.7);display:block;margin-bottom:7px;}
+        .finput{
+          width:100%;background:rgba(255,255,255,.04);
+          border:1px solid rgba(201,162,39,.3);border-radius:10px;
+          padding:13px 16px;color:#f0ebe0;font-size:15px;outline:none;
+          transition:border-color .2s,box-shadow .2s;
+        }
+        .finput:focus{border-color:#c9a227;box-shadow:0 0 0 2px rgba(201,162,39,.12);}
+        .finput::placeholder{color:#4a3a2a;}
+
+        /* MAIN GRID */
+        .form-grid{display:grid;grid-template-columns:2fr 1fr;gap:12px;margin-bottom:14px;}
+
+        /* HOUSES 2x2 */
+        .houses{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+        .house-btn{
+          border:2px solid transparent;border-radius:12px;
+          padding:10px 6px;cursor:pointer;
+          display:flex;flex-direction:column;align-items:center;gap:5px;
+          transition:all .25s;opacity:.55;
+          min-height:90px;justify-content:center;
+        }
+        .house-btn.sel{opacity:1;box-shadow:0 0 20px rgba(255,255,255,.18);}
+        .house-btn:not(.sel):hover{opacity:.8;}
+        .house-logo{width:44px;height:44px;object-fit:contain;}
+        .house-name{font-family:'Cinzel',serif;font-size:9px;font-weight:600;letter-spacing:1px;line-height:1.2;text-align:center;}
+        .house-thai{font-size:10px;opacity:.8;text-align:center;}
+
+        /* RIGHT COLUMN */
+        .right-col{display:flex;flex-direction:column;gap:10px;}
+
+        /* YEAR SELECT */
+        .year-select{
+          width:100%;flex:1;
+          background:rgba(255,255,255,.04);
+          border:1px solid rgba(201,162,39,.3);border-radius:10px;
+          padding:0 12px;color:#f0ebe0;font-size:13px;
+          outline:none;cursor:pointer;
+          transition:border-color .2s;
+          appearance:none;-webkit-appearance:none;
+          background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c9a227' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+          background-repeat:no-repeat;background-position:right 12px center;
+          min-height:52px;
+        }
+        .year-select:focus{border-color:#c9a227;box-shadow:0 0 0 2px rgba(201,162,39,.12);}
+        .year-select option{background:#0d0800;color:#f0ebe0;}
+
+        /* ERROR */
+        .error{color:#e87070;font-size:11px;text-align:center;background:rgba(180,40,40,.12);border-radius:8px;padding:8px;margin-bottom:10px;}
+
+        /* SUBMIT */
+        .submit-btn{
+          width:100%;padding:16px;
+          background:linear-gradient(135deg,#4a1e06,#c9a227 40%,#e8c060 50%,#c9a227 60%,#4a1e06);
+          border:none;border-radius:12px;
+          color:#0a0500;font-size:14px;font-family:'Cinzel',serif;font-weight:700;letter-spacing:3px;
+          cursor:pointer;transition:all .2s;
+          box-shadow:0 4px 24px rgba(201,162,39,.35);
+        }
+        .submit-btn:hover{box-shadow:0 4px 40px rgba(201,162,39,.6);transform:translateY(-1px);}
+        .submit-btn:disabled{opacity:.6;cursor:not-allowed;transform:none;}
       `}</style>
 
       <div className="page">
@@ -161,10 +208,7 @@ export default function HomePage() {
           <div className="bg-vignette"/>
           <div className="stars"/>
           <div className="particles">
-            <div className="p"/><div className="p"/><div className="p"/>
-            <div className="p"/><div className="p"/><div className="p"/>
-            <div className="p"/><div className="p"/><div className="p"/>
-            <div className="p"/><div className="p"/><div className="p"/>
+            {[...Array(8)].map((_,i) => <div key={i} className="p"/>)}
           </div>
         </div>
 
@@ -172,9 +216,7 @@ export default function HomePage() {
           <img className="logo" src="/Photo_Club/LOGO_Photo_Club.png" alt="Photo Club"/>
           <div className="presents">PHOTO CLUB PRESENTS</div>
           <div className="deco-line">
-            <span className="deco-line-bar"/>
-            <span className="deco-line-diamond">✦</span>
-            <span className="deco-line-bar"/>
+            <span className="deco-line-bar"/><span className="deco-gem">✦</span><span className="deco-line-bar"/>
           </div>
           <div className="event-type">นิทรรศการภาพถ่าย</div>
           <div className="event-title">PENSIEVE</div>
@@ -185,64 +227,56 @@ export default function HomePage() {
             📍 {EVENT.venue}
           </div>
 
-          <div className="form-card" style={{position:'relative'}}>
-            <div className="deco-corner deco-tl"/><div className="deco-corner deco-tr"/>
-            <div className="deco-corner deco-bl"/><div className="deco-corner deco-br"/>
+          <div className="form-card">
+            <div className="deco-c dc-tl"/><div className="deco-c dc-tr"/>
+            <div className="deco-c dc-bl"/><div className="deco-c dc-br"/>
 
-            <div className="field">
-              <label className="field-label">ชื่อ – นามสกุล [IC]</label>
-              <input
-                placeholder="กรอกชื่อภาษาอังกฤษ..."
-                value={name}
-                onChange={e => setName(e.target.value)}
-              />
+            {/* ชื่อ */}
+            <div className="name-field">
+              <label className="flabel">ชื่อ – นามสกุล &nbsp;[IC]</label>
+              <input className="finput" placeholder="กรอกชื่อภาษาอังกฤษ..." value={name} onChange={e => setName(e.target.value)}/>
             </div>
 
-            <div className="field">
-              <label className="field-label">HOUSE</label>
-              <div className="houses">
-                {HOUSES.map(h => (
-                  <button
-                    key={h.id}
-                    className={`house-btn ${house === h.id ? 'selected' : ''}`}
-                    style={{ background: h.bg, color: h.textColor, borderColor: house === h.id ? h.accent : 'transparent' }}
-                    onClick={() => setHouse(h.id)}
-                  >
-                    <img className="house-logo" src={h.logo} alt={h.name}/>
-                    <span className="house-name">{h.name}</span>
-                    <span className="house-thai">{h.thai}</span>
-                  </button>
-                ))}
+            {/* Grid: บ้าน + ชั้นปี/เลขจดหมาย */}
+            <div className="form-grid">
+              {/* LEFT: 4 บ้าน */}
+              <div>
+                <label className="flabel" style={{marginBottom:'8px'}}>HOUSE</label>
+                <div className="houses">
+                  {HOUSES.map(h => (
+                    <button
+                      key={h.id}
+                      className={`house-btn${house === h.id ? ' sel' : ''}`}
+                      style={{ background: h.bg, color: h.textColor, borderColor: house === h.id ? h.accent : 'transparent' }}
+                      onClick={() => setHouse(h.id)}
+                    >
+                      <img className="house-logo" src={h.logo} alt={h.name}/>
+                      <span className="house-name">{h.name}</span>
+                      <span className="house-thai">{h.thai}</span>
+                    </button>
+                  ))}
+                </div>
               </div>
-            </div>
 
-            <div className="field">
-              <label className="field-label">ชั้นปี</label>
-              <div className="years">
-                {YEARS.map(y => (
-                  <button
-                    key={y}
-                    className={`year-btn ${year === y ? 'selected' : ''}`}
-                    onClick={() => setYear(y)}
-                  >
-                    {y}
-                  </button>
-                ))}
+              {/* RIGHT: ชั้นปี + เลขจดหมาย */}
+              <div className="right-col">
+                <div style={{flex:1,display:'flex',flexDirection:'column'}}>
+                  <label className="flabel">ชั้นปี</label>
+                  <select className="year-select" value={year} onChange={e => setYear(e.target.value)} style={{flex:1}}>
+                    <option value="">เลือก...</option>
+                    {YEARS.map(y => <option key={y} value={y}>{y}</option>)}
+                  </select>
+                </div>
+                <div style={{flex:1,display:'flex',flexDirection:'column'}}>
+                  <label className="flabel">เลขจดหมาย</label>
+                  <input className="finput" style={{flex:1,minHeight:'52px'}} placeholder="เลขจดหมาย..." value={letter} onChange={e => setLetter(e.target.value)}/>
+                </div>
               </div>
-            </div>
-
-            <div className="field">
-              <label className="field-label">เลขจดหมาย</label>
-              <input
-                placeholder="กรอกเลขจดหมาย..."
-                value={letter}
-                onChange={e => setLetter(e.target.value)}
-              />
             </div>
 
             {error && <div className="error">{error}</div>}
             <button className="submit-btn" onClick={handleSubmit} disabled={submitting}>
-              {submitting ? '⏳ กำลังส่ง...' : '✦ ส่งข้อมูล ✦'}
+              {submitting ? '⏳ กำลังส่ง...' : '✦  ส่งคำขอการ์ดเชิญ  ✦'}
             </button>
           </div>
         </div>
