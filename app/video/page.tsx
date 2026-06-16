@@ -52,7 +52,6 @@ return (
           ref={videoRef}
           src="/Photo_Club/video-owl-note-new.mp4"
           autoPlay
-          muted
           playsInline
           onEnded={handleEnded}
           style={{ pointerEvents: ended ? 'none' : 'auto' }}
