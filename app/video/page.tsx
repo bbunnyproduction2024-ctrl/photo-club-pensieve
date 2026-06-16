@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation';
 export default function VideoPage() {
   const router = useRouter();
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [muted, setMuted] = useState(true);
   const [ended, setEnded] = useState(false);
   const [showBtn, setShowBtn] = useState(false);
 
@@ -20,13 +19,7 @@ export default function VideoPage() {
     setTimeout(() => setShowBtn(true), 400);
   };
 
-  const toggleMute = () => {
-    if (!videoRef.current) return;
-    videoRef.current.muted = !videoRef.current.muted;
-    setMuted(videoRef.current.muted);
-  };
-
-  return (
+return (
     <>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Noto+Serif+Thai:wght@400;500&display=swap');
@@ -35,21 +28,6 @@ export default function VideoPage() {
         .wrap{width:100dvw;height:100dvh;position:relative;display:flex;align-items:center;justify-content:center;background:#000;}
         video{width:100%;height:100%;object-fit:contain;display:block;}
         .overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;}
-
-        /* Unmute button */
-        .unmute-btn{
-          position:absolute;top:16px;right:16px;
-          background:rgba(0,0,0,.6);border:1px solid rgba(201,162,39,.4);
-          border-radius:999px;padding:8px 14px;
-          color:rgba(201,162,39,.9);font-size:13px;
-          font-family:'Noto Serif Thai',serif;letter-spacing:1px;
-          cursor:pointer;backdrop-filter:blur(4px);
-          display:flex;align-items:center;gap:6px;
-          transition:all .2s;z-index:10;
-          animation:fadeIn .5s ease both;
-        }
-        .unmute-btn:hover{background:rgba(0,0,0,.8);border-color:rgba(201,162,39,.7);}
-        @keyframes fadeIn{from{opacity:0;transform:translateY(-8px);}to{opacity:1;transform:translateY(0);}}
 
         /* End button */
         .btn-wrap{pointer-events:all;display:flex;flex-direction:column;align-items:center;gap:12px;animation:fadeUp .6s ease both;}
@@ -79,13 +57,6 @@ export default function VideoPage() {
           onEnded={handleEnded}
           style={{ pointerEvents: ended ? 'none' : 'auto' }}
         />
-
-        {/* Unmute button — shows while video is playing */}
-        {!ended && (
-          <button className="unmute-btn" onClick={toggleMute}>
-            {muted ? '🔇 แตะเพื่อเปิดเสียง' : '🔊 เสียงเปิดอยู่'}
-          </button>
-        )}
 
         {/* Open letter button */}
         {showBtn && (
