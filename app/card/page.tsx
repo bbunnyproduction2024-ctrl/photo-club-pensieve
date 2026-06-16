@@ -32,6 +32,7 @@ export default function CardPage() {
   const [data, setData] = useState<Data | null>(null);
   const [saving, setSaving] = useState(false);
   const [revealed, setRevealed] = useState(false);
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const cardRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -53,10 +54,16 @@ export default function CardPage() {
         logging: false,
         imageTimeout: 0,
       });
-      const link = document.createElement('a');
-      link.download = `Pensieve-Invitation-${data?.name ?? 'guest'}.png`;
-      link.href = canvas.toDataURL('image/png');
-      link.click();
+      const url = canvas.toDataURL('image/png');
+      const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+      if (isMobile) {
+        setPreviewUrl(url);
+      } else {
+        const link = document.createElement('a');
+        link.download = `Pensieve-Invitation-${data?.name ?? 'guest'}.png`;
+        link.href = url;
+        link.click();
+      }
     } finally {
       setSaving(false);
     }
@@ -218,6 +225,15 @@ export default function CardPage() {
         .btn-dl:disabled{opacity:.6;cursor:not-allowed;}
         .btn-back{background:none;border:1px solid rgba(201,162,39,.2);border-radius:10px;padding:10px;color:rgba(201,162,39,.5);font-size:12px;font-family:'Cinzel',serif;cursor:pointer;transition:all .2s;width:100%;text-align:center;}
         .btn-back:hover{border-color:rgba(201,162,39,.5);color:#c9a227;}
+
+        /* Preview modal */
+        .modal{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.92);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;gap:16px;animation:fadeIn .3s ease;}
+        @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+        .modal img{max-width:100%;max-height:70dvh;border-radius:12px;box-shadow:0 0 40px rgba(201,162,39,.3);}
+        .modal-hint{font-family:'Noto Serif Thai',serif;font-size:14px;color:rgba(201,162,39,.9);text-align:center;letter-spacing:1px;line-height:1.8;}
+        .modal-hint span{font-size:12px;color:rgba(201,162,39,.5);display:block;margin-top:4px;}
+        .modal-close{background:none;border:1px solid rgba(201,162,39,.3);border-radius:10px;padding:10px 28px;color:rgba(201,162,39,.6);font-size:13px;font-family:'Cinzel',serif;cursor:pointer;transition:all .2s;}
+        .modal-close:hover{border-color:#c9a227;color:#c9a227;}
       `}</style>
 
       <div className="page">
@@ -276,13 +292,28 @@ export default function CardPage() {
           </div>
 
           <button className="btn-dl" disabled={saving} onClick={downloadCard}>
-            {saving ? '⏳ กำลังบันทึก...' : '💾 บันทึกการ์ดเชิญ'}
+            {saving ? '⏳ กำลังสร้างรูป...' : '💾 บันทึกการ์ดเชิญ'}
           </button>
           <button className="btn-back" onClick={() => router.push('/')}>
             ← กรอกข้อมูลใหม่
           </button>
         </div>
       </div>
+
+      {/* Mobile preview modal */}
+      {previewUrl && (
+        <div className="modal">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={previewUrl} alt="การ์ดเชิญ"/>
+          <div className="modal-hint">
+            กดค้างที่รูปเพื่อบันทึกลงเครื่อง
+            <span>Press & hold the image to save</span>
+          </div>
+          <button className="modal-close" onClick={() => setPreviewUrl(null)}>
+            ปิด
+          </button>
+        </div>
+      )}
     </>
   );
 }
