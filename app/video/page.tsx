@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 export default function VideoPage() {
   const router = useRouter();
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [started, setStarted] = useState(false);
+  const [muted, setMuted] = useState(true);
   const [ended, setEnded] = useState(false);
   const [showBtn, setShowBtn] = useState(false);
 
@@ -15,14 +15,15 @@ export default function VideoPage() {
     }
   }, [router]);
 
-  const handleStart = () => {
-    setStarted(true);
-    videoRef.current?.play();
-  };
-
   const handleEnded = () => {
     setEnded(true);
     setTimeout(() => setShowBtn(true), 400);
+  };
+
+  const toggleMute = () => {
+    if (!videoRef.current) return;
+    videoRef.current.muted = !videoRef.current.muted;
+    setMuted(videoRef.current.muted);
   };
 
   return (
@@ -33,14 +34,22 @@ export default function VideoPage() {
         body{background:#000;overflow:hidden;}
         .wrap{width:100dvw;height:100dvh;position:relative;display:flex;align-items:center;justify-content:center;background:#000;}
         video{width:100%;height:100%;object-fit:contain;display:block;}
-        .overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;}
+        .overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;}
 
-        /* Tap to start */
-        .tap-screen{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;background:rgba(0,0,0,.85);cursor:pointer;z-index:10;}
-        .tap-icon{font-size:48px;animation:pulse 2s ease-in-out infinite;}
-        .tap-text{font-family:'Noto Serif Thai',serif;font-size:16px;color:rgba(201,162,39,.9);letter-spacing:2px;}
-        .tap-sub{font-family:'Cinzel',serif;font-size:10px;color:rgba(201,162,39,.5);letter-spacing:3px;}
-        @keyframes pulse{0%,100%{transform:scale(1);opacity:.8;}50%{transform:scale(1.1);opacity:1;}}
+        /* Unmute button */
+        .unmute-btn{
+          position:absolute;top:16px;right:16px;
+          background:rgba(0,0,0,.6);border:1px solid rgba(201,162,39,.4);
+          border-radius:999px;padding:8px 14px;
+          color:rgba(201,162,39,.9);font-size:13px;
+          font-family:'Noto Serif Thai',serif;letter-spacing:1px;
+          cursor:pointer;backdrop-filter:blur(4px);
+          display:flex;align-items:center;gap:6px;
+          transition:all .2s;z-index:10;
+          animation:fadeIn .5s ease both;
+        }
+        .unmute-btn:hover{background:rgba(0,0,0,.8);border-color:rgba(201,162,39,.7);}
+        @keyframes fadeIn{from{opacity:0;transform:translateY(-8px);}to{opacity:1;transform:translateY(0);}}
 
         /* End button */
         .btn-wrap{pointer-events:all;display:flex;flex-direction:column;align-items:center;gap:12px;animation:fadeUp .6s ease both;}
@@ -64,17 +73,18 @@ export default function VideoPage() {
         <video
           ref={videoRef}
           src="/Photo_Club/video-owl-note.mp4"
+          autoPlay
+          muted
           playsInline
           onEnded={handleEnded}
+          style={{ pointerEvents: ended ? 'none' : 'auto' }}
         />
 
-        {/* Tap to start overlay */}
-        {!started && (
-          <div className="tap-screen" onClick={handleStart}>
-            <div className="tap-icon">🦉</div>
-            <div className="tap-text">แตะเพื่อรับจดหมาย</div>
-            <div className="tap-sub">TAP TO BEGIN</div>
-          </div>
+        {/* Unmute button — shows while video is playing */}
+        {!ended && (
+          <button className="unmute-btn" onClick={toggleMute}>
+            {muted ? '🔇 แตะเพื่อเปิดเสียง' : '🔊 เสียงเปิดอยู่'}
+          </button>
         )}
 
         {/* Open letter button */}
