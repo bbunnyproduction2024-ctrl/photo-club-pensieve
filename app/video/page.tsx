@@ -50,7 +50,7 @@ return (
       <div className="wrap">
         <video
           ref={videoRef}
-          src="/Photo_Club/video-owl-note.mp4"
+          src="/Photo_Club/video-owl-note-new.mp4"
           autoPlay
           muted
           playsInline
