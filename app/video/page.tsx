@@ -5,21 +5,31 @@ import { useRouter } from 'next/navigation';
 export default function VideoPage() {
   const router = useRouter();
   const videoRef = useRef<HTMLVideoElement>(null);
+  const [blocked, setBlocked] = useState(false);
   const [ended, setEnded] = useState(false);
   const [showBtn, setShowBtn] = useState(false);
 
   useEffect(() => {
     if (!sessionStorage.getItem('photoclub')) {
       router.replace('/');
+      return;
     }
+    const v = videoRef.current;
+    if (!v) return;
+    v.play().catch(() => setBlocked(true));
   }, [router]);
+
+  const handleTap = () => {
+    setBlocked(false);
+    videoRef.current?.play();
+  };
 
   const handleEnded = () => {
     setEnded(true);
     setTimeout(() => setShowBtn(true), 400);
   };
 
-return (
+  return (
     <>
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Noto+Serif+Thai:wght@400;500&display=swap');
@@ -28,6 +38,13 @@ return (
         .wrap{width:100dvw;height:100dvh;position:relative;display:flex;align-items:center;justify-content:center;background:#000;}
         video{width:100%;height:100%;object-fit:contain;display:block;}
         .overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;}
+
+        /* Blocked overlay */
+        .tap-screen{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;background:rgba(0,0,0,.88);cursor:pointer;z-index:10;}
+        .tap-icon{font-size:52px;animation:pulse 2s ease-in-out infinite;}
+        @keyframes pulse{0%,100%{transform:scale(1);opacity:.8;}50%{transform:scale(1.1);opacity:1;}}
+        .tap-text{font-family:'Noto Serif Thai',serif;font-size:16px;color:rgba(201,162,39,.9);letter-spacing:2px;}
+        .tap-sub{font-family:'Cinzel',serif;font-size:10px;color:rgba(201,162,39,.45);letter-spacing:4px;}
 
         /* End button */
         .btn-wrap{pointer-events:all;display:flex;flex-direction:column;align-items:center;gap:12px;animation:fadeUp .6s ease both;}
@@ -51,13 +68,19 @@ return (
         <video
           ref={videoRef}
           src="/Photo_Club/video-owl-note-new.mp4"
-          autoPlay
           playsInline
           onEnded={handleEnded}
-          style={{ pointerEvents: ended ? 'none' : 'auto' }}
         />
 
-        {/* Open letter button */}
+        {/* แสดงเฉพาะตอนบราวเซอร์บล็อก autoplay */}
+        {blocked && (
+          <div className="tap-screen" onClick={handleTap}>
+            <div className="tap-icon">🦉</div>
+            <div className="tap-text">แตะเพื่อรับจดหมาย</div>
+            <div className="tap-sub">TAP TO BEGIN</div>
+          </div>
+        )}
+
         {showBtn && (
           <div className="overlay">
             <div className="btn-wrap">
