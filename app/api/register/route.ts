@@ -2,9 +2,15 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(req: NextRequest) {
   try {
-    const { name, houseName, houseThai, year, letter } = await req.json();
+    const body = await req.json();
+    const { name, houseName, houseThai, year, letter } = body;
+
+    if (!name || !houseName || !year || !letter) {
+      return NextResponse.json({ error: 'ข้อมูลไม่ครบ' }, { status: 400 });
+    }
+
     const webhookUrl = process.env.PHOTO_CLUB_SHEETS_WEBHOOK;
-    if (!webhookUrl) return NextResponse.json({ ok: true }); // ยังไม่ได้ตั้ง webhook ก็ผ่านไปก่อน
+    if (!webhookUrl) return NextResponse.json({ ok: true });
 
     await fetch(webhookUrl, {
       method: 'POST',
