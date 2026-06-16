@@ -178,7 +178,9 @@ export default function CardPage() {
           position:relative;z-index:1;
           background:linear-gradient(135deg,rgba(20,10,2,.3) 0%,rgba(10,5,1,.5) 100%);
         }
-        .r-presents{font-family:'Cinzel',serif;font-size:7px;letter-spacing:4px;color:rgba(201,162,39,.55);margin-bottom:6px;}
+        .r-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;}
+        .r-presents{font-family:'Cinzel',serif;font-size:7px;letter-spacing:4px;color:rgba(201,162,39,.55);}
+        .r-logo{width:36px;height:36px;object-fit:contain;filter:drop-shadow(0 0 8px rgba(201,162,39,.4));}
         .r-divider{display:flex;align-items:center;gap:6px;margin-bottom:8px;}
         .r-divider-bar{flex:1;height:1px;background:linear-gradient(90deg,rgba(201,162,39,.6),transparent);}
         .r-divider-dot{font-size:8px;color:rgba(201,162,39,.7);}
@@ -246,7 +248,10 @@ export default function CardPage() {
 
               {/* RIGHT — info panel */}
               <div className="card-right">
-                <div className="r-presents">PHOTO CLUB PRESENTS</div>
+                <div className="r-top">
+                  <div className="r-presents">PHOTO CLUB PRESENTS</div>
+                  <img className="r-logo" src="/Photo_Club/LOGO_Photo_Club.png" alt="Photo Club"/>
+                </div>
                 <div className="r-divider">
                   <div className="r-divider-bar"/>
                   <div className="r-divider-dot">✦</div>
@@ -260,7 +265,7 @@ export default function CardPage() {
                 </div>
                 <div className="r-welcome">ยินดีต้อนรับเข้าสู่งาน</div>
                 <div className="r-name">{data.name}</div>
-                <div className="r-year">{data.year} &nbsp;·&nbsp; จดหมายฉบับที่ {data.letter}</div>
+                <div className="r-year">{data.year}</div>
                 <div className="r-meta">
                   <div className="r-meta-row"><span className="r-meta-icon">📅</span><span>{EVENT.date}</span></div>
                   <div className="r-meta-row"><span className="r-meta-icon">⏰</span><span>{EVENT.time}</span></div>
