@@ -11,10 +11,10 @@ const EVENT = {
 };
 
 const HOUSES = [
-  { id: 'gryffindor', name: 'Gryffindor', thai: 'กริฟฟินดอร์', bg: '#7F0909', accent: '#FFC500', icon: '🦁', textColor: '#FFC500', logo: '/Photo_Club/logo Gryffindor.png' },
-  { id: 'hufflepuff', name: 'Hufflepuff', thai: 'ฮัฟเฟิลพัฟ', bg: '#F0C500', accent: '#372E29', icon: '🦡', textColor: '#372E29', logo: '/Photo_Club/logo Hufflepuff.png' },
-  { id: 'ravenclaw', name: 'Ravenclaw', thai: 'เรเวนคลอว์', bg: '#0E1A40', accent: '#946B2D', icon: '🦅', textColor: '#A89060', logo: '/Photo_Club/logo Ravenclaw.png' },
-  { id: 'slytherin', name: 'Slytherin', thai: 'สลิธีริน', bg: '#1A472A', accent: '#AAAAAA', icon: '🐍', textColor: '#AAAAAA', logo: '/Photo_Club/logo Slytherin.png' },
+  { id: 'gryffindor', name: 'Gryffindor', thai: 'กริฟฟินดอร์', bg: '#7F0909', accent: '#FFC500', icon: '🦁', textColor: '#FFC500', logo: '/Photo_Club/logo_Gryffindor.png' },
+  { id: 'hufflepuff', name: 'Hufflepuff', thai: 'ฮัฟเฟิลพัฟ', bg: '#F0C500', accent: '#372E29', icon: '🦡', textColor: '#372E29', logo: '/Photo_Club/logo_Hufflepuff.png' },
+  { id: 'ravenclaw', name: 'Ravenclaw', thai: 'เรเวนคลอว์', bg: '#0E1A40', accent: '#946B2D', icon: '🦅', textColor: '#A89060', logo: '/Photo_Club/logo_Ravenclaw.png' },
+  { id: 'slytherin', name: 'Slytherin', thai: 'สลิธีริน', bg: '#1A472A', accent: '#AAAAAA', icon: '🐍', textColor: '#AAAAAA', logo: '/Photo_Club/logo_Slytherin.png' },
 ];
 
 const YEARS = ['ปี 1','ปี 2','ปี 3','ปี 4','ปี 5','ปี 6','ปี 7'];
