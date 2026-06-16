@@ -80,159 +80,163 @@ export default function CardPage() {
   return (
     <>
       <style>{`
-        @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;500;600&family=Noto+Serif+Thai:wght@300;400;500;600&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cinzel:wght@400;500;600;700&family=Noto+Serif+Thai:wght@300;400;500;600&display=swap');
         *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-        body{background:#050302;font-family:'Noto Serif Thai',serif;min-height:100dvh;}
+        body{background:#060301;font-family:'Noto Serif Thai',serif;min-height:100dvh;}
 
-        /* ── Page ── */
-        .page{min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px 12px 40px;position:relative;overflow:hidden;}
+        /* PAGE */
+        .page{min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px 16px 40px;position:relative;overflow:hidden;}
 
-        /* ── Background ── */
+        /* BG */
         .bg{position:fixed;inset:0;z-index:0;}
-        .bg img{width:100%;height:100%;object-fit:cover;opacity:.2;filter:blur(3px);}
+        .bg img{width:100%;height:100%;object-fit:cover;opacity:.15;filter:blur(6px);}
         .bg-ov{position:absolute;inset:0;
           background:
-            radial-gradient(ellipse at 50% 0%,rgba(100,50,0,.6) 0%,transparent 55%),
-            radial-gradient(ellipse at 50% 100%,rgba(60,20,0,.5) 0%,transparent 50%),
-            linear-gradient(180deg,#060302 0%,#0a0500 50%,#060302 100%);
+            radial-gradient(ellipse at 50% 100%,rgba(120,60,0,.5) 0%,transparent 55%),
+            radial-gradient(ellipse at 50% 0%,rgba(80,35,0,.3) 0%,transparent 45%),
+            linear-gradient(180deg,#050200 0%,#0a0400 50%,#050200 100%);
         }
-        .bg-vignette{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,transparent 30%,rgba(0,0,0,.75) 100%);}
+        .bg-vignette{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,transparent 25%,rgba(0,0,0,.85) 100%);}
         .stars{position:absolute;inset:0;}
         .stars::before,.stars::after{content:'';position:absolute;inset:0;
           background-image:
-            radial-gradient(1px 1px at 8% 12%,rgba(201,162,39,.7) 0%,transparent 100%),
-            radial-gradient(1px 1px at 22% 38%,rgba(255,255,255,.4) 0%,transparent 100%),
-            radial-gradient(1px 1px at 45% 8%,rgba(201,162,39,.6) 0%,transparent 100%),
-            radial-gradient(1.5px 1.5px at 65% 25%,rgba(255,220,100,.5) 0%,transparent 100%),
-            radial-gradient(1px 1px at 80% 55%,rgba(255,255,255,.35) 0%,transparent 100%),
-            radial-gradient(1px 1px at 92% 18%,rgba(201,162,39,.6) 0%,transparent 100%),
-            radial-gradient(1px 1px at 15% 72%,rgba(255,255,255,.3) 0%,transparent 100%),
-            radial-gradient(1.5px 1.5px at 55% 80%,rgba(201,162,39,.5) 0%,transparent 100%),
-            radial-gradient(1px 1px at 35% 60%,rgba(255,255,255,.25) 0%,transparent 100%),
-            radial-gradient(1px 1px at 75% 88%,rgba(201,162,39,.4) 0%,transparent 100%);
-          animation:twinkle 5s ease-in-out infinite alternate;}
+            radial-gradient(1px 1px at 10% 15%,rgba(201,162,39,.6) 0%,transparent 100%),
+            radial-gradient(1px 1px at 28% 42%,rgba(255,255,255,.35) 0%,transparent 100%),
+            radial-gradient(1.5px 1.5px at 50% 8%,rgba(201,162,39,.7) 0%,transparent 100%),
+            radial-gradient(1px 1px at 72% 28%,rgba(255,255,255,.3) 0%,transparent 100%),
+            radial-gradient(1px 1px at 88% 55%,rgba(201,162,39,.5) 0%,transparent 100%),
+            radial-gradient(1px 1px at 18% 75%,rgba(255,255,255,.25) 0%,transparent 100%),
+            radial-gradient(1.5px 1.5px at 60% 82%,rgba(201,162,39,.5) 0%,transparent 100%),
+            radial-gradient(1px 1px at 92% 20%,rgba(255,220,100,.4) 0%,transparent 100%);
+          animation:tw 5s ease-in-out infinite alternate;}
         .stars::after{
           background-image:
-            radial-gradient(1px 1px at 18% 22%,rgba(201,162,39,.5) 0%,transparent 100%),
-            radial-gradient(1px 1px at 40% 48%,rgba(255,255,255,.3) 0%,transparent 100%),
-            radial-gradient(1.5px 1.5px at 70% 15%,rgba(201,162,39,.7) 0%,transparent 100%),
-            radial-gradient(1px 1px at 88% 70%,rgba(255,255,255,.4) 0%,transparent 100%),
-            radial-gradient(1px 1px at 6% 90%,rgba(201,162,39,.4) 0%,transparent 100%);
-          animation:twinkle 7s ease-in-out infinite alternate-reverse;}
-        @keyframes twinkle{0%{opacity:.5;}100%{opacity:1;}}
+            radial-gradient(1px 1px at 35% 18%,rgba(201,162,39,.5) 0%,transparent 100%),
+            radial-gradient(1px 1px at 78% 65%,rgba(255,255,255,.3) 0%,transparent 100%),
+            radial-gradient(1.5px 1.5px at 5% 50%,rgba(201,162,39,.6) 0%,transparent 100%),
+            radial-gradient(1px 1px at 55% 90%,rgba(255,220,100,.4) 0%,transparent 100%);
+          animation:tw 7s ease-in-out infinite alternate-reverse;}
+        @keyframes tw{0%{opacity:.4;}100%{opacity:1;}}
 
-        /* ── Content wrapper ── */
-        .content{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:16px;width:100%;max-width:680px;}
+        /* CONTENT */
+        .content{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:14px;width:100%;max-width:400px;}
 
-        /* ── Card (landscape) ── */
-        .card-wrap{
-          width:100%;
-          opacity:0;transform:scale(.92) translateY(20px);
-          transition:opacity .8s ease,transform .8s ease;
-        }
-        .card-wrap.show{opacity:1;transform:scale(1) translateY(0);}
+        /* CARD WRAP */
+        .card-wrap{width:100%;opacity:0;transform:translateY(30px) scale(.95);transition:all .9s cubic-bezier(.16,1,.3,1);}
+        .card-wrap.show{opacity:1;transform:translateY(0) scale(1);}
 
+        /* CARD */
         .card{
-          width:100%;
-          background:linear-gradient(135deg,#12080300 0%,#0e0703 100%);
-          border-radius:20px;
-          position:relative;overflow:hidden;
-          box-shadow:0 0 0 1px rgba(201,162,39,.5),0 0 60px rgba(150,90,0,.3),0 20px 80px rgba(0,0,0,.9);
-          display:flex;flex-direction:row;
-          min-height:220px;
-          animation:cardPulse 5s ease-in-out infinite alternate;
+          width:100%;position:relative;
+          background:
+            radial-gradient(ellipse at 50% 100%,rgba(80,35,0,.6) 0%,transparent 60%),
+            radial-gradient(ellipse at 50% 0%,rgba(60,25,0,.4) 0%,transparent 50%),
+            repeating-linear-gradient(
+              105deg,
+              transparent 0px, transparent 40px,
+              rgba(201,162,39,.015) 40px, rgba(201,162,39,.015) 41px
+            ),
+            linear-gradient(160deg,#1c0d03 0%,#0d0602 30%,#140a03 60%,#0a0401 100%);
+          border-radius:4px;
+          padding:32px 24px 28px;
+          overflow:hidden;
+          animation:glow 5s ease-in-out infinite alternate;
         }
-        @keyframes cardPulse{
-          0%{box-shadow:0 0 0 1px rgba(201,162,39,.4),0 0 40px rgba(150,90,0,.2),0 20px 80px rgba(0,0,0,.9);}
-          100%{box-shadow:0 0 0 1px rgba(201,162,39,.7),0 0 90px rgba(180,110,0,.4),0 20px 80px rgba(0,0,0,.9);}
-        }
-
-        /* watermark */
-        .card::after{
-          content:'PENSIEVE';
-          position:absolute;inset:0;
-          display:flex;align-items:center;justify-content:center;
-          font-family:'Cinzel Decorative',serif;font-size:72px;font-weight:700;
-          color:rgba(201,162,39,.04);letter-spacing:8px;pointer-events:none;z-index:0;
+        @keyframes glow{
+          0%{box-shadow:0 0 0 1px rgba(201,162,39,.5),0 0 30px rgba(120,60,0,.2),0 0 80px rgba(80,30,0,.15),inset 0 0 60px rgba(0,0,0,.5);}
+          100%{box-shadow:0 0 0 1px rgba(201,162,39,.8),0 0 60px rgba(160,90,0,.35),0 0 120px rgba(100,50,0,.25),inset 0 0 60px rgba(0,0,0,.3);}
         }
 
-        /* Left panel — house color */
-        .card-left{
-          width:38%;flex-shrink:0;
-          display:flex;flex-direction:column;align-items:center;justify-content:center;
-          padding:24px 16px;
-          position:relative;z-index:1;
-          gap:10px;
-        }
-        .card-left::after{
-          content:'';position:absolute;right:0;top:10%;bottom:10%;
-          width:1px;background:linear-gradient(180deg,transparent,rgba(201,162,39,.6) 30%,rgba(201,162,39,.6) 70%,transparent);
-        }
-        .house-glow{
-          position:absolute;inset:0;
-          opacity:.18;
-          border-radius:20px 0 0 20px;
-        }
-        .house-logo-big{width:80px;height:80px;object-fit:contain;filter:drop-shadow(0 0 16px rgba(255,255,255,.3));position:relative;z-index:1;}
-        .house-name-big{font-family:'Cinzel',serif;font-size:13px;font-weight:600;letter-spacing:2px;text-align:center;position:relative;z-index:1;}
-        .house-thai-big{font-size:11px;opacity:.75;text-align:center;position:relative;z-index:1;}
-        .house-deco{font-size:18px;position:relative;z-index:1;}
+        /* Borders */
+        .b1{position:absolute;inset:6px;border:1.5px solid rgba(201,162,39,.7);border-radius:2px;pointer-events:none;}
+        .b2{position:absolute;inset:10px;border:1px solid rgba(201,162,39,.25);border-radius:2px;pointer-events:none;}
 
-        /* Right panel */
-        .card-right{
-          flex:1;display:flex;flex-direction:column;justify-content:center;
-          padding:22px 22px 22px 24px;
-          position:relative;z-index:1;
-          background:linear-gradient(135deg,rgba(20,10,2,.3) 0%,rgba(10,5,1,.5) 100%);
-        }
-        .r-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;}
-        .r-presents{font-family:'Cinzel',serif;font-size:7px;letter-spacing:4px;color:rgba(201,162,39,.55);}
-        .r-logo{width:36px;height:36px;object-fit:contain;filter:drop-shadow(0 0 8px rgba(201,162,39,.4));}
-        .r-divider{display:flex;align-items:center;gap:6px;margin-bottom:8px;}
-        .r-divider-bar{flex:1;height:1px;background:linear-gradient(90deg,rgba(201,162,39,.6),transparent);}
-        .r-divider-dot{font-size:8px;color:rgba(201,162,39,.7);}
-        .r-event-type{font-size:9px;color:rgba(201,162,39,.6);letter-spacing:3px;margin-bottom:2px;}
-        .r-title{font-family:'Cinzel Decorative',serif;font-size:22px;font-weight:700;color:#c9a227;text-shadow:0 0 20px rgba(201,162,39,.5);line-height:1;margin-bottom:2px;}
-        .r-title-th{font-size:10px;color:rgba(201,162,39,.65);letter-spacing:2px;margin-bottom:10px;}
-        .r-divider2{display:flex;align-items:center;gap:6px;margin-bottom:10px;}
-        .r-divider2-bar{flex:1;height:1px;background:linear-gradient(90deg,rgba(201,162,39,.4),transparent);}
-        .r-divider2-dot{font-size:8px;color:rgba(201,162,39,.5);}
-        .r-welcome{font-size:9px;color:#a08060;letter-spacing:2px;margin-bottom:4px;}
-        .r-name{font-family:'Cinzel',serif;font-size:18px;font-weight:600;color:#f0ebe0;letter-spacing:1px;line-height:1.2;word-break:break-word;margin-bottom:3px;text-shadow:0 0 10px rgba(255,255,255,.1);}
-        .r-year{font-size:10px;color:#a08060;margin-bottom:10px;letter-spacing:1px;}
-        .r-meta{display:flex;flex-direction:column;gap:3px;}
-        .r-meta-row{display:flex;align-items:center;gap:6px;font-size:10px;color:#b09878;}
-        .r-meta-icon{font-size:10px;width:14px;text-align:center;flex-shrink:0;}
+        /* Corners */
+        .co{position:absolute;width:28px;height:28px;border-color:#c9a227;border-style:solid;opacity:.9;}
+        .co-tl{top:12px;left:12px;border-width:2px 0 0 2px;}
+        .co-tr{top:12px;right:12px;border-width:2px 2px 0 0;}
+        .co-bl{bottom:12px;left:12px;border-width:0 0 2px 2px;}
+        .co-br{bottom:12px;right:12px;border-width:0 2px 2px 0;}
 
-        /* border ornaments */
-        .b-outer{position:absolute;inset:5px;border:1px solid rgba(201,162,39,.35);border-radius:16px;pointer-events:none;z-index:2;}
-        .corner{position:absolute;width:16px;height:16px;border-color:#c9a227;border-style:solid;opacity:.8;z-index:3;}
-        .c-tl{top:10px;left:10px;border-width:2px 0 0 2px;}
-        .c-tr{top:10px;right:10px;border-width:2px 2px 0 0;}
-        .c-bl{bottom:10px;left:10px;border-width:0 0 2px 2px;}
-        .c-br{bottom:10px;right:10px;border-width:0 2px 2px 0;}
+        /* Corner diamonds */
+        .co-dot{position:absolute;width:6px;height:6px;background:#c9a227;transform:rotate(45deg);opacity:.8;}
+        .co-dot.tl{top:9px;left:9px;}
+        .co-dot.tr{top:9px;right:9px;}
+        .co-dot.bl{bottom:9px;left:9px;}
+        .co-dot.br{bottom:9px;right:9px;}
 
-        /* ── Buttons ── */
-        .btn-dl{
-          width:100%;padding:14px;
-          background:linear-gradient(135deg,#5a2e08,#c9a227 50%,#5a2e08);
-          border:none;border-radius:12px;
-          color:#0a0600;font-size:15px;font-family:'Cinzel',serif;font-weight:600;letter-spacing:2px;
-          cursor:pointer;transition:all .2s;
-          box-shadow:0 4px 24px rgba(201,162,39,.4);
-        }
-        .btn-dl:hover{opacity:.9;box-shadow:0 4px 40px rgba(201,162,39,.6);}
-        .btn-dl:disabled{opacity:.6;cursor:not-allowed;}
-        .btn-back{background:none;border:1px solid rgba(201,162,39,.2);border-radius:10px;padding:10px;color:rgba(201,162,39,.5);font-size:12px;font-family:'Cinzel',serif;cursor:pointer;transition:all .2s;width:100%;text-align:center;}
-        .btn-back:hover{border-color:rgba(201,162,39,.5);color:#c9a227;}
+        /* Watermark */
+        .card::after{content:'PENSIEVE';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Cinzel Decorative',serif;font-size:56px;font-weight:700;color:rgba(201,162,39,.03);letter-spacing:6px;pointer-events:none;z-index:0;}
 
-        /* Preview modal */
-        .modal{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.92);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;gap:16px;animation:fadeIn .3s ease;}
-        @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
-        .modal img{max-width:100%;max-height:70dvh;border-radius:12px;box-shadow:0 0 40px rgba(201,162,39,.3);}
-        .modal-hint{font-family:'Noto Serif Thai',serif;font-size:14px;color:rgba(201,162,39,.9);text-align:center;letter-spacing:1px;line-height:1.8;}
-        .modal-hint span{font-size:12px;color:rgba(201,162,39,.5);display:block;margin-top:4px;}
-        .modal-close{background:none;border:1px solid rgba(201,162,39,.3);border-radius:10px;padding:10px 28px;color:rgba(201,162,39,.6);font-size:13px;font-family:'Cinzel',serif;cursor:pointer;transition:all .2s;}
+        /* INNER */
+        .inner{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;text-align:center;}
+
+        /* Top crown ornament */
+        .crown-row{display:flex;align-items:center;gap:10px;margin-bottom:10px;}
+        .crown-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(201,162,39,.6));}
+        .crown-line.r{background:linear-gradient(270deg,transparent,rgba(201,162,39,.6));}
+        .crown-icon{font-size:22px;filter:drop-shadow(0 0 6px rgba(201,162,39,.6));}
+
+        /* Logos row */
+        .logos-row{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:10px;}
+        .main-logo{width:64px;height:64px;object-fit:contain;filter:drop-shadow(0 0 14px rgba(201,162,39,.5));}
+
+        /* Presents */
+        .presents{font-family:'Cinzel',serif;font-size:8px;letter-spacing:5px;color:rgba(201,162,39,.55);margin-bottom:8px;}
+
+        /* Gold divider */
+        .divider{display:flex;align-items:center;gap:8px;width:100%;margin-bottom:8px;}
+        .div-line{flex:1;height:1px;}
+        .div-line.l{background:linear-gradient(90deg,transparent,#c9a227);}
+        .div-line.r{background:linear-gradient(270deg,transparent,#c9a227);}
+        .div-gem{font-size:10px;color:#c9a227;flex-shrink:0;}
+
+        /* Event type */
+        .ev-type{font-size:10px;color:rgba(201,162,39,.65);letter-spacing:4px;margin-bottom:4px;}
+
+        /* Title */
+        .title{font-family:'Cinzel Decorative',serif;font-size:30px;font-weight:700;color:#c9a227;line-height:1;letter-spacing:2px;text-shadow:0 0 30px rgba(201,162,39,.6),0 0 60px rgba(201,162,39,.3);margin-bottom:4px;}
+        .title-th{font-size:11px;color:rgba(201,162,39,.65);letter-spacing:4px;margin-bottom:12px;}
+
+        /* Welcome */
+        .welcome{font-size:10px;color:#987050;letter-spacing:2px;margin-bottom:6px;}
+        .name{font-family:'Cinzel',serif;font-size:22px;font-weight:700;color:#f5ede0;letter-spacing:1px;line-height:1.2;word-break:break-word;text-shadow:0 0 20px rgba(255,255,255,.15);margin-bottom:4px;}
+        .year-txt{font-size:11px;color:#987050;letter-spacing:2px;margin-bottom:12px;}
+
+        /* House badge */
+        .house-row{display:flex;align-items:center;gap:10px;padding:8px 16px;border-radius:999px;border:1px solid;margin-bottom:14px;}
+        .house-logo-sm{width:28px;height:28px;object-fit:contain;}
+        .house-name-txt{font-family:'Cinzel',serif;font-size:11px;font-weight:600;letter-spacing:2px;}
+
+        /* Event box */
+        .ev-box{width:100%;background:rgba(201,162,39,.05);border:1px solid rgba(201,162,39,.2);border-radius:4px;padding:12px 16px;margin-bottom:12px;text-align:left;}
+        .ev-box-title{font-family:'Cinzel',serif;font-size:8px;letter-spacing:4px;color:rgba(201,162,39,.5);text-align:center;margin-bottom:10px;}
+        .ev-row{display:flex;align-items:flex-start;gap:8px;font-size:11px;color:#c0a07a;padding:4px 0;border-bottom:1px solid rgba(201,162,39,.08);}
+        .ev-row:last-child{border-bottom:none;}
+        .ev-icon{width:16px;text-align:center;flex-shrink:0;font-size:11px;}
+        .ev-label{font-family:'Cinzel',serif;font-size:7px;letter-spacing:2px;color:rgba(201,162,39,.45);display:block;margin-bottom:1px;}
+
+        /* Message */
+        .msg{font-size:10px;color:#987050;line-height:2;letter-spacing:.5px;margin-bottom:10px;font-style:italic;}
+        .msg strong{color:#c9a227;font-style:normal;}
+
+        /* Footer */
+        .footer{font-family:'Cinzel',serif;font-size:7px;letter-spacing:3px;color:rgba(201,162,39,.35);margin-top:4px;}
+
+        /* BUTTONS */
+        .btn-dl{width:100%;padding:15px;background:linear-gradient(135deg,#4a1e06,#c9a227 40%,#e8c060 50%,#c9a227 60%,#4a1e06);border:none;border-radius:4px;color:#0a0500;font-size:14px;font-family:'Cinzel',serif;font-weight:700;letter-spacing:3px;cursor:pointer;transition:all .2s;box-shadow:0 4px 30px rgba(201,162,39,.4);}
+        .btn-dl:hover{box-shadow:0 4px 50px rgba(201,162,39,.7);transform:translateY(-1px);}
+        .btn-dl:disabled{opacity:.6;cursor:not-allowed;transform:none;}
+        .btn-back{background:none;border:1px solid rgba(201,162,39,.15);border-radius:4px;padding:10px;color:rgba(201,162,39,.4);font-size:11px;font-family:'Cinzel',serif;cursor:pointer;transition:all .2s;width:100%;text-align:center;letter-spacing:2px;}
+        .btn-back:hover{border-color:rgba(201,162,39,.4);color:#c9a227;}
+
+        /* MODAL */
+        .modal{position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.94);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px;gap:16px;animation:fi .3s ease;}
+        @keyframes fi{from{opacity:0;}to{opacity:1;}}
+        .modal img{max-width:100%;max-height:70dvh;border-radius:4px;box-shadow:0 0 40px rgba(201,162,39,.3);}
+        .modal-hint{font-family:'Noto Serif Thai',serif;font-size:15px;color:rgba(201,162,39,.9);text-align:center;line-height:2;}
+        .modal-hint span{font-size:11px;color:rgba(201,162,39,.45);display:block;letter-spacing:2px;}
+        .modal-close{background:none;border:1px solid rgba(201,162,39,.3);border-radius:4px;padding:10px 32px;color:rgba(201,162,39,.6);font-size:12px;font-family:'Cinzel',serif;cursor:pointer;transition:all .2s;letter-spacing:2px;}
         .modal-close:hover{border-color:#c9a227;color:#c9a227;}
       `}</style>
 
@@ -247,52 +251,87 @@ export default function CardPage() {
         <div className="content">
           <div className={`card-wrap${revealed ? ' show' : ''}`}>
             <div className="card" ref={cardRef}>
-              {/* ornaments */}
-              <div className="b-outer"/>
-              <div className="corner c-tl"/><div className="corner c-tr"/>
-              <div className="corner c-bl"/><div className="corner c-br"/>
+              <div className="b1"/><div className="b2"/>
+              <div className="co co-tl"/><div className="co co-tr"/>
+              <div className="co co-bl"/><div className="co co-br"/>
+              <div className="co-dot tl"/><div className="co-dot tr"/>
+              <div className="co-dot bl"/><div className="co-dot br"/>
 
-              {/* LEFT — house panel */}
-              <div className="card-left">
-                <div className="house-glow" style={{background: data.houseBg}}/>
-                <div className="house-deco">✦</div>
-                <img className="house-logo-big" src={houseLogo || ''} alt={data.houseName}/>
-                <div className="house-name-big" style={{color: data.houseTextColor}}>{data.houseName}</div>
-                <div className="house-thai-big" style={{color: data.houseTextColor}}>{data.houseThai}</div>
-                <div className="house-deco">✦</div>
-              </div>
+              <div className="inner">
+                {/* Crown */}
+                <div className="crown-row">
+                  <div className="crown-line"/>
+                  <div className="crown-icon">👑</div>
+                  <div className="crown-line r"/>
+                </div>
 
-              {/* RIGHT — info panel */}
-              <div className="card-right">
-                <div className="r-top">
-                  <div className="r-presents">PHOTO CLUB PRESENTS</div>
-                  <img className="r-logo" src="/Photo_Club/LOGO_Photo_Club.png" alt="Photo Club"/>
+                {/* Main logo */}
+                <div className="logos-row">
+                  <img className="main-logo" src="/Photo_Club/LOGO_Photo_Club.png" alt="Photo Club"/>
                 </div>
-                <div className="r-divider">
-                  <div className="r-divider-bar"/>
-                  <div className="r-divider-dot">✦</div>
+
+                <div className="presents">PHOTO CLUB PRESENTS</div>
+
+                <div className="divider">
+                  <div className="div-line l"/>
+                  <div className="div-gem">✦</div>
+                  <div className="div-line r"/>
                 </div>
-                <div className="r-event-type">นิทรรศการภาพถ่าย</div>
-                <div className="r-title">PENSIEVE</div>
-                <div className="r-title-th">อ่างแห่งความทรงจำ</div>
-                <div className="r-divider2">
-                  <div className="r-divider2-bar"/>
-                  <div className="r-divider2-dot">◆</div>
+
+                <div className="ev-type">นิทรรศการภาพถ่าย</div>
+                <div className="title">PENSIEVE</div>
+                <div className="title-th">อ่างแห่งความทรงจำ</div>
+
+                <div className="divider">
+                  <div className="div-line l"/>
+                  <div className="div-gem">◆</div>
+                  <div className="div-line r"/>
                 </div>
-                <div className="r-welcome">ยินดีต้อนรับเข้าสู่งาน</div>
-                <div className="r-name">{data.name}</div>
-                <div className="r-year">{data.year}</div>
-                <div className="r-meta">
-                  <div className="r-meta-row"><span className="r-meta-icon">📅</span><span>{EVENT.date}</span></div>
-                  <div className="r-meta-row"><span className="r-meta-icon">⏰</span><span>{EVENT.time}</span></div>
-                  <div className="r-meta-row"><span className="r-meta-icon">📍</span><span>{EVENT.venue}</span></div>
+
+                <div className="welcome">— ยินดีต้อนรับเข้าสู่งาน —</div>
+                <div className="name">{data.name}</div>
+                <div className="year-txt">{data.year}</div>
+
+                {/* House badge */}
+                <div className="house-row" style={{background: data.houseBg + '33', borderColor: data.houseAccent + '60', color: data.houseTextColor}}>
+                  {houseLogo && <img className="house-logo-sm" src={houseLogo} alt={data.houseName}/>}
+                  <div className="house-name-txt">{data.houseName} · {data.houseThai}</div>
                 </div>
+
+                {/* Event details */}
+                <div className="ev-box">
+                  <div className="ev-box-title">◆ &nbsp; รายละเอียดงาน &nbsp; ◆</div>
+                  <div className="ev-row">
+                    <span className="ev-icon">📅</span>
+                    <span><span className="ev-label">DATE</span>{EVENT.date}</span>
+                  </div>
+                  <div className="ev-row">
+                    <span className="ev-icon">⏰</span>
+                    <span><span className="ev-label">TIME</span>{EVENT.time}</span>
+                  </div>
+                  <div className="ev-row">
+                    <span className="ev-icon">📍</span>
+                    <span><span className="ev-label">VENUE</span>{EVENT.venue}</span>
+                  </div>
+                </div>
+
+                <div className="msg">
+                  อย่าลืม <strong>นำการ์ดเชิญนี้</strong> ไปแสดงตัวที่หน้างานด้วยนะคะ
+                </div>
+
+                <div className="divider">
+                  <div className="div-line l"/>
+                  <div className="div-gem">✦</div>
+                  <div className="div-line r"/>
+                </div>
+
+                <div className="footer">PENSIEVE · PHOTO CLUB · นิทรรศการภาพถ่าย</div>
               </div>
             </div>
           </div>
 
           <button className="btn-dl" disabled={saving} onClick={downloadCard}>
-            {saving ? '⏳ กำลังสร้างรูป...' : '💾 บันทึกการ์ดเชิญ'}
+            {saving ? '⏳ กำลังสร้างรูป...' : '💾  บันทึกการ์ดเชิญ'}
           </button>
           <button className="btn-back" onClick={() => router.push('/')}>
             ← กรอกข้อมูลใหม่
@@ -300,18 +339,15 @@ export default function CardPage() {
         </div>
       </div>
 
-      {/* Mobile preview modal */}
       {previewUrl && (
         <div className="modal">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src={previewUrl} alt="การ์ดเชิญ"/>
           <div className="modal-hint">
             กดค้างที่รูปเพื่อบันทึกลงเครื่อง
-            <span>Press & hold the image to save</span>
+            <span>PRESS &amp; HOLD TO SAVE</span>
           </div>
-          <button className="modal-close" onClick={() => setPreviewUrl(null)}>
-            ปิด
-          </button>
+          <button className="modal-close" onClick={() => setPreviewUrl(null)}>CLOSE</button>
         </div>
       )}
     </>
