@@ -221,10 +221,10 @@ export default function CardPage() {
         /* VENUE — แถว VENUE ในส่วนรายละเอียดงาน */
         .ov-venue{
           position:absolute;
-          top:86%;left:40%;
+          top:86%;left:35%;
           width:74%;
           font-family:'Noto Serif Thai',serif;
-          font-size:30px;
+          font-size:20px;
           color:#e8d8b0;
           letter-spacing:.5px;
           line-height:1.3;
