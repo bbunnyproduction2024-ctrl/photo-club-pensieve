@@ -15,6 +15,14 @@ type Data = {
   letter: string;
 };
 
+const CARD_METEORS = [
+  { left:'18%', dur:6.0, del:0,   angle:14, travel:'112vh' },
+  { left:'45%', dur:7.5, del:4.2, angle:17, travel:'108vh' },
+  { left:'70%', dur:5.5, del:8.0, angle:13, travel:'115vh' },
+  { left:'85%', dur:8.0, del:2.5, angle:16, travel:'110vh' },
+  { left:'32%', dur:6.5, del:6.5, angle:15, travel:'113vh' },
+];
+
 const HOUSE_LOGO: Record<string, string> = {
   gryffindor: '/Photo_Club/logo_Gryffindor.png',
   hufflepuff: '/Photo_Club/logo_Hufflepuff.png',
@@ -81,8 +89,86 @@ export default function CardPage() {
 
         .page{min-height:100dvh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:20px 16px 40px;position:relative;overflow:hidden;}
         .bg{position:fixed;inset:0;z-index:0;}
-        .bg img{width:100%;height:100%;object-fit:cover;opacity:.55;}
-        .bg-ov{position:absolute;inset:0;background:rgba(0,0,0,.5);}
+        .bg img{width:100%;height:100%;object-fit:cover;opacity:.5;}
+        .bg-ov{position:absolute;inset:0;background:rgba(0,0,0,.45);}
+
+        /* STARS */
+        .stars{position:absolute;inset:0;overflow:hidden;}
+        .stars::before{content:'';position:absolute;inset:0;background-image:
+          radial-gradient(1px 1px at 4% 8%,rgba(255,255,255,.55) 0%,transparent 100%),
+          radial-gradient(1.5px 1.5px at 10% 22%,rgba(201,162,39,.7) 0%,transparent 100%),
+          radial-gradient(1px 1px at 17% 5%,rgba(255,240,180,.5) 0%,transparent 100%),
+          radial-gradient(1px 1px at 23% 38%,rgba(255,255,255,.4) 0%,transparent 100%),
+          radial-gradient(2px 2px at 29% 14%,rgba(201,162,39,.65) 0%,transparent 100%),
+          radial-gradient(1px 1px at 36% 48%,rgba(255,255,255,.35) 0%,transparent 100%),
+          radial-gradient(1px 1px at 42% 6%,rgba(201,162,39,.6) 0%,transparent 100%),
+          radial-gradient(1.5px 1.5px at 49% 30%,rgba(255,220,100,.55) 0%,transparent 100%),
+          radial-gradient(1px 1px at 55% 18%,rgba(255,255,255,.45) 0%,transparent 100%),
+          radial-gradient(1px 1px at 62% 42%,rgba(201,162,39,.5) 0%,transparent 100%),
+          radial-gradient(2px 2px at 68% 9%,rgba(201,162,39,.7) 0%,transparent 100%),
+          radial-gradient(1px 1px at 74% 55%,rgba(255,255,255,.3) 0%,transparent 100%),
+          radial-gradient(1px 1px at 80% 20%,rgba(201,162,39,.6) 0%,transparent 100%),
+          radial-gradient(1.5px 1.5px at 87% 35%,rgba(255,240,180,.55) 0%,transparent 100%),
+          radial-gradient(1px 1px at 93% 12%,rgba(255,255,255,.5) 0%,transparent 100%),
+          radial-gradient(1px 1px at 7% 62%,rgba(201,162,39,.45) 0%,transparent 100%),
+          radial-gradient(1.5px 1.5px at 33% 70%,rgba(255,255,255,.4) 0%,transparent 100%),
+          radial-gradient(1px 1px at 58% 65%,rgba(201,162,39,.5) 0%,transparent 100%),
+          radial-gradient(1px 1px at 78% 72%,rgba(255,240,180,.4) 0%,transparent 100%),
+          radial-gradient(1px 1px at 96% 58%,rgba(255,255,255,.35) 0%,transparent 100%);
+          animation:twinkle 4s ease-in-out infinite alternate;}
+        .stars::after{content:'';position:absolute;inset:0;background-image:
+          radial-gradient(1px 1px at 2% 35%,rgba(201,162,39,.5) 0%,transparent 100%),
+          radial-gradient(1px 1px at 13% 52%,rgba(255,255,255,.4) 0%,transparent 100%),
+          radial-gradient(2px 2px at 20% 16%,rgba(201,162,39,.65) 0%,transparent 100%),
+          radial-gradient(1px 1px at 27% 60%,rgba(255,240,180,.45) 0%,transparent 100%),
+          radial-gradient(1px 1px at 38% 26%,rgba(255,255,255,.5) 0%,transparent 100%),
+          radial-gradient(1.5px 1.5px at 45% 75%,rgba(201,162,39,.55) 0%,transparent 100%),
+          radial-gradient(1px 1px at 52% 50%,rgba(255,255,255,.35) 0%,transparent 100%),
+          radial-gradient(1px 1px at 60% 80%,rgba(201,162,39,.45) 0%,transparent 100%),
+          radial-gradient(2px 2px at 66% 28%,rgba(255,240,180,.6) 0%,transparent 100%),
+          radial-gradient(1px 1px at 71% 88%,rgba(255,255,255,.3) 0%,transparent 100%),
+          radial-gradient(1px 1px at 76% 45%,rgba(201,162,39,.55) 0%,transparent 100%),
+          radial-gradient(1.5px 1.5px at 83% 65%,rgba(255,255,255,.45) 0%,transparent 100%),
+          radial-gradient(1px 1px at 90% 80%,rgba(201,162,39,.4) 0%,transparent 100%),
+          radial-gradient(1px 1px at 97% 42%,rgba(255,240,180,.5) 0%,transparent 100%),
+          radial-gradient(1px 1px at 15% 85%,rgba(255,255,255,.35) 0%,transparent 100%),
+          radial-gradient(1.5px 1.5px at 44% 90%,rgba(201,162,39,.5) 0%,transparent 100%),
+          radial-gradient(1px 1px at 64% 92%,rgba(255,255,255,.3) 0%,transparent 100%),
+          radial-gradient(1px 1px at 85% 88%,rgba(201,162,39,.45) 0%,transparent 100%),
+          radial-gradient(2px 2px at 50% 3%,rgba(201,162,39,.7) 0%,transparent 100%),
+          radial-gradient(1px 1px at 8% 78%,rgba(255,240,180,.4) 0%,transparent 100%);
+          animation:twinkle 6s ease-in-out infinite alternate-reverse;}
+        @keyframes twinkle{0%{opacity:.5;}100%{opacity:1;}}
+
+        /* METEORS */
+        .meteors{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
+        .meteor{
+          position:absolute;top:-2px;width:1px;height:0;
+          background:linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,240,180,.35) 50%,rgba(201,162,39,.45) 100%);
+          border-radius:0 0 1px 1px;box-shadow:0 0 1px rgba(201,162,39,.2);
+          transform-origin:top center;animation:meteor-fall linear infinite;
+        }
+        @keyframes meteor-fall{
+          0%  {height:0;opacity:0;transform:rotate(var(--angle)) translateY(0);}
+          8%  {height:0;opacity:0;}
+          20% {height:35px;opacity:.35;}
+          75% {height:45px;opacity:.25;}
+          92% {height:20px;opacity:.05;}
+          100%{height:0;opacity:0;transform:rotate(var(--angle)) translateY(var(--travel));}
+        }
+
+        /* PARTICLES */
+        .particles{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
+        .p{position:absolute;bottom:-10px;width:2px;height:2px;border-radius:50%;background:rgba(201,162,39,.7);animation:rise linear infinite;}
+        .p:nth-child(1) {left:4%;  animation-duration:10s;animation-delay:0s;   width:1.5px;height:1.5px;}
+        .p:nth-child(2) {left:14%; animation-duration:14s;animation-delay:2s;   background:rgba(255,220,100,.5);}
+        .p:nth-child(3) {left:26%; animation-duration:9s; animation-delay:5s;   width:1px;height:1px;}
+        .p:nth-child(4) {left:40%; animation-duration:12s;animation-delay:1s;}
+        .p:nth-child(5) {left:55%; animation-duration:11s;animation-delay:7s;   width:3px;height:3px;background:rgba(255,220,100,.4);}
+        .p:nth-child(6) {left:68%; animation-duration:8s; animation-delay:3s;   width:1.5px;height:1.5px;}
+        .p:nth-child(7) {left:80%; animation-duration:13s;animation-delay:0.5s; background:rgba(255,240,180,.5);}
+        .p:nth-child(8) {left:92%; animation-duration:10s;animation-delay:4s;   width:1px;height:1px;}
+        @keyframes rise{0%{transform:translateY(0);opacity:0;}8%{opacity:.85;}75%{opacity:.45;}100%{transform:translateY(-100vh);opacity:0;}}
         .content{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:14px;width:100%;max-width:370px;}
 
         .card-wrap{width:100%;opacity:0;transform:translateY(20px) scale(.97);transition:all .9s cubic-bezier(.16,1,.3,1);}
@@ -160,6 +246,21 @@ export default function CardPage() {
         <div className="bg">
           <img src="/Photo_Club/background.png" alt=""/>
           <div className="bg-ov"/>
+          <div className="stars"/>
+          <div className="meteors">
+            {CARD_METEORS.map((m, i) => (
+              <div key={i} className="meteor" style={{
+                left: m.left,
+                animationDuration: `${m.dur}s`,
+                animationDelay: `${m.del}s`,
+                '--angle': `${m.angle}deg`,
+                '--travel': m.travel,
+              } as React.CSSProperties}/>
+            ))}
+          </div>
+          <div className="particles">
+            {[...Array(8)].map((_,i) => <div key={i} className="p"/>)}
+          </div>
         </div>
 
         <div className="content">
