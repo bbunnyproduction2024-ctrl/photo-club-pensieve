@@ -16,7 +16,7 @@ const HOUSES = [
   { id: 'slytherin', name: 'Slytherin', thai: 'สลิธีริน', bg: '#1A472A', accent: '#AAAAAA', textColor: '#CCCCCC', logo: '/Photo_Club/logo_Slytherin.png' },
 ];
 
-const YEARS = ['Year 1','Year 2','Year 3','Year 4','Year 5','Year 6','Year 7'];
+const YEAR_BTNS = ['Year 1','Year 5','Year 2','Year 6','Year 3','Year 7','Year 4'];
 
 const METEORS = [
   { left:'18%',  dur:6.0, del:0,   angle:14, travel:'112vh' },
@@ -31,12 +31,14 @@ export default function HomePage() {
   const [name, setName] = useState('');
   const [house, setHouse] = useState('');
   const [year, setYear] = useState('');
+  const [customYear, setCustomYear] = useState('');
   const [letter, setLetter] = useState('');
   const [error, setError] = useState('');
   const [submitting, setSubmitting] = useState(false);
 
   const handleSubmit = async () => {
-    if (!name.trim() || !house || !year || !letter.trim()) {
+    const yearFinal = customYear.trim() || year;
+    if (!name.trim() || !house || !yearFinal || !letter.trim()) {
       setError('กรุณากรอกข้อมูลให้ครบทุกช่องค่ะ');
       return;
     }
@@ -44,7 +46,7 @@ export default function HomePage() {
     const payload = {
       name: name.trim(), house: h.id, houseName: h.name, houseThai: h.thai,
       houseAccent: h.accent, houseBg: h.bg, houseTextColor: h.textColor,
-      houseIcon: '', year, letter: letter.trim(),
+      houseIcon: '', year: yearFinal, letter: letter.trim(),
     };
     setSubmitting(true);
     setError('');
@@ -201,54 +203,81 @@ export default function HomePage() {
         .dc-bl{bottom:8px;left:8px;border-width:0 0 2px 2px;}
         .dc-br{bottom:8px;right:8px;border-width:0 2px 2px 0;}
 
-        /* NAME INPUT */
-        .name-field{margin-bottom:14px;}
-        .flabel{font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;color:rgba(201,162,39,.7);display:block;margin-bottom:7px;}
+        /* INPUTS */
+        .flabel{font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;color:rgba(201,162,39,.7);display:block;margin-bottom:6px;}
         .finput{
           width:100%;background:rgba(255,255,255,.04);
           border:1px solid rgba(201,162,39,.3);border-radius:10px;
-          padding:13px 16px;color:#f0ebe0;font-size:15px;outline:none;
+          padding:12px 14px;color:#f0ebe0;font-size:14px;outline:none;
           transition:border-color .2s,box-shadow .2s;
         }
         .finput:focus{border-color:#c9a227;box-shadow:0 0 0 2px rgba(201,162,39,.12);}
         .finput::placeholder{color:#4a3a2a;}
 
-        /* MAIN GRID */
-        .form-grid{display:grid;grid-template-columns:2fr 1fr;gap:12px;margin-bottom:14px;}
+        /* TOP ROW: ชื่อ + เลขจดหมาย */
+        .top-row{display:grid;grid-template-columns:3fr 1.1fr;gap:10px;margin-bottom:12px;}
 
-        /* HOUSES 2x2 */
-        .houses{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+        /* MAIN GRID: บ้าน | ตำแหน่ง | ปี */
+        .form-grid{display:grid;grid-template-columns:2fr 1.3fr 2fr;gap:10px;margin-bottom:14px;}
+
+        /* HOUSES */
+        .houses{display:grid;grid-template-columns:1fr 1fr;gap:7px;}
         .house-btn{
-          border:2px solid transparent;border-radius:12px;
-          padding:10px 6px;cursor:pointer;
-          display:flex;flex-direction:column;align-items:center;gap:5px;
-          transition:all .25s;opacity:.55;
-          min-height:90px;justify-content:center;
+          border:2px solid transparent;border-radius:11px;
+          padding:8px 4px;cursor:pointer;
+          display:flex;flex-direction:column;align-items:center;gap:4px;
+          transition:all .22s;opacity:.45;
+          min-height:82px;justify-content:center;
         }
-        .house-btn.sel{opacity:1;box-shadow:0 0 20px rgba(255,255,255,.18);}
-        .house-btn:not(.sel):hover{opacity:.8;}
-        .house-logo{width:44px;height:44px;object-fit:contain;}
+        .house-btn.sel{
+          opacity:1;filter:brightness(1.15);
+          box-shadow:0 0 22px rgba(255,255,255,.25),0 0 30px rgba(201,162,39,.2);
+        }
+        .house-btn:not(.sel):hover{opacity:.72;}
+        .house-logo{width:40px;height:40px;object-fit:contain;}
         .house-name{font-family:'Cinzel',serif;font-size:9px;font-weight:600;letter-spacing:1px;line-height:1.2;text-align:center;}
         .house-thai{font-size:10px;opacity:.8;text-align:center;}
 
-        /* RIGHT COLUMN */
-        .right-col{display:flex;flex-direction:column;gap:10px;}
-
-        /* YEAR SELECT */
-        .year-select{
-          width:100%;flex:1;
-          background:rgba(255,255,255,.04);
-          border:1px solid rgba(201,162,39,.3);border-radius:10px;
-          padding:0 12px;color:#f0ebe0;font-size:13px;
-          outline:none;cursor:pointer;
-          transition:border-color .2s;
-          appearance:none;-webkit-appearance:none;
-          background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23c9a227' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
-          background-repeat:no-repeat;background-position:right 12px center;
-          min-height:52px;
+        /* MIDDLE COL: Professor + กรอกเอง */
+        .mid-col{display:flex;flex-direction:column;gap:7px;}
+        .prof-btn{
+          width:100%;padding:11px 6px;
+          border:1px solid rgba(201,162,39,.22);border-radius:10px;
+          background:rgba(255,255,255,.03);
+          color:rgba(201,162,39,.4);
+          font-size:10px;font-family:'Cinzel',serif;
+          cursor:pointer;transition:all .18s;text-align:center;letter-spacing:1.5px;
         }
-        .year-select:focus{border-color:#c9a227;box-shadow:0 0 0 2px rgba(201,162,39,.12);}
-        .year-select option{background:#0d0800;color:#f0ebe0;}
+        .prof-btn.sel{
+          background:rgba(201,162,39,.22);border-color:#c9a227;color:#f0e8c0;
+          box-shadow:0 0 16px rgba(201,162,39,.55),inset 0 0 6px rgba(201,162,39,.12);
+          text-shadow:0 0 10px rgba(201,162,39,.6);font-weight:700;
+        }
+        .custom-yr{
+          width:100%;padding:9px 10px;
+          background:rgba(255,255,255,.03);
+          border:1px solid rgba(201,162,39,.2);border-radius:10px;
+          color:#f0ebe0;font-size:12px;font-family:'Noto Serif Thai',serif;
+          outline:none;transition:border-color .2s;
+        }
+        .custom-yr:focus{border-color:rgba(201,162,39,.6);box-shadow:0 0 0 2px rgba(201,162,39,.1);}
+        .custom-yr::placeholder{color:#3a2e20;font-size:11px;}
+
+        /* YEAR BUTTONS 2-col */
+        .year-btns{display:grid;grid-template-columns:1fr 1fr;gap:5px;}
+        .ybtn{
+          padding:8px 3px;
+          border:1px solid rgba(201,162,39,.2);border-radius:8px;
+          background:rgba(255,255,255,.02);
+          color:rgba(201,162,39,.38);
+          font-size:9px;font-family:'Cinzel',serif;
+          cursor:pointer;transition:all .18s;text-align:center;letter-spacing:.5px;
+        }
+        .ybtn.sel{
+          background:rgba(201,162,39,.22);border-color:#c9a227;color:#f0e8c0;
+          box-shadow:0 0 14px rgba(201,162,39,.55),inset 0 0 4px rgba(201,162,39,.12);
+          text-shadow:0 0 8px rgba(201,162,39,.6);font-weight:700;
+        }
 
         /* ERROR */
         .error{color:#e87070;font-size:11px;text-align:center;background:rgba(180,40,40,.12);border-radius:8px;padding:8px;margin-bottom:10px;}
@@ -311,17 +340,23 @@ export default function HomePage() {
             <div className="deco-c dc-tl"/><div className="deco-c dc-tr"/>
             <div className="deco-c dc-bl"/><div className="deco-c dc-br"/>
 
-            {/* ชื่อ */}
-            <div className="name-field">
-              <label className="flabel">ชื่อ – นามสกุล &nbsp;[IC]</label>
-              <input className="finput" placeholder="กรอกชื่อภาษาอังกฤษ..." value={name} onChange={e => setName(e.target.value)}/>
+            {/* ROW 1: ชื่อ + เลขจดหมาย */}
+            <div className="top-row" style={{marginBottom:'12px'}}>
+              <div>
+                <label className="flabel">NAME &nbsp;[IC]</label>
+                <input className="finput" placeholder="Full name (English)..." value={name} onChange={e => setName(e.target.value)}/>
+              </div>
+              <div>
+                <label className="flabel">เลขจดหมาย</label>
+                <input className="finput" placeholder="No." value={letter} onChange={e => setLetter(e.target.value)}/>
+              </div>
             </div>
 
-            {/* Grid: บ้าน + ชั้นปี/เลขจดหมาย */}
+            {/* ROW 2: บ้าน | ตำแหน่ง | ปี */}
             <div className="form-grid">
-              {/* LEFT: 4 บ้าน */}
+              {/* บ้าน 2x2 */}
               <div>
-                <label className="flabel" style={{marginBottom:'8px'}}>HOUSE</label>
+                <label className="flabel">HOUSE</label>
                 <div className="houses">
                   {HOUSES.map(h => (
                     <button
@@ -338,18 +373,39 @@ export default function HomePage() {
                 </div>
               </div>
 
-              {/* RIGHT: ชั้นปี + เลขจดหมาย */}
-              <div className="right-col">
-                <div style={{flex:1,display:'flex',flexDirection:'column'}}>
-                  <label className="flabel">ชั้นปี</label>
-                  <select className="year-select" value={year} onChange={e => setYear(e.target.value)} style={{flex:1}}>
-                    <option value="">เลือก...</option>
-                    {YEARS.map(y => <option key={y} value={y}>{y}</option>)}
-                  </select>
+              {/* Professor + กรอกเอง */}
+              <div className="mid-col">
+                <label className="flabel">ROLE</label>
+                <button
+                  className={`prof-btn${year === 'Professor' ? ' sel' : ''}`}
+                  onClick={() => { setYear('Professor'); setCustomYear(''); }}
+                >
+                  Professor
+                </button>
+                <div>
+                  <div className="flabel" style={{marginBottom:'4px'}}>อื่นๆ</div>
+                  <input
+                    className="custom-yr"
+                    placeholder="กรอกเอง..."
+                    value={customYear}
+                    onChange={e => { setCustomYear(e.target.value); setYear(''); }}
+                  />
                 </div>
-                <div style={{flex:1,display:'flex',flexDirection:'column'}}>
-                  <label className="flabel">เลขจดหมาย</label>
-                  <input className="finput" style={{flex:1,minHeight:'52px'}} placeholder="เลขจดหมาย..." value={letter} onChange={e => setLetter(e.target.value)}/>
+              </div>
+
+              {/* Year 1-7 */}
+              <div>
+                <label className="flabel">YEAR</label>
+                <div className="year-btns">
+                  {YEAR_BTNS.map(y => (
+                    <button
+                      key={y}
+                      className={`ybtn${year === y ? ' sel' : ''}`}
+                      onClick={() => { setYear(y); setCustomYear(''); }}
+                    >
+                      {y}
+                    </button>
+                  ))}
                 </div>
               </div>
             </div>
