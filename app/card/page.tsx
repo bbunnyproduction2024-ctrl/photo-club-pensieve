@@ -221,7 +221,7 @@ export default function CardPage() {
         /* VENUE — แถว VENUE ในส่วนรายละเอียดงาน */
         .ov-venue{
           position:absolute;
-          top:85%;left:33%;
+          top:85.5%;left:33%;
           width:74%;
           font-family:'Noto Serif Thai',serif;
           font-size:14.5px;
@@ -232,7 +232,7 @@ export default function CardPage() {
 
         .ov-date{
           position:absolute;
-          top:75%;left:33%;
+          top:77%;left:33%;
           width:74%;
           font-family:'Noto Serif Thai',serif;
           font-size:14.5px;
@@ -242,7 +242,7 @@ export default function CardPage() {
         }
         .ov-time{
           position:absolute;
-          top:80%;left:33%;
+          top:81.5%;left:33%;
           width:74%;
           font-family:'Noto Serif Thai',serif;
           font-size:14.5px;
