@@ -230,6 +230,27 @@ export default function CardPage() {
           line-height:1.3;
         }
 
+        .ov-date{
+          position:absolute;
+          top:89%;left:33%;
+          width:74%;
+          font-family:'Noto Serif Thai',serif;
+          font-size:14.5px;
+          color:#A89060;
+          letter-spacing:.5px;
+          line-height:1.3;
+        }
+        .ov-time{
+          position:absolute;
+          top:93%;left:33%;
+          width:74%;
+          font-family:'Noto Serif Thai',serif;
+          font-size:14.5px;
+          color:#A89060;
+          letter-spacing:.5px;
+          line-height:1.3;
+        }
+
         .ov-house-name{
           font-family:'Cinzel',serif;
           font-size:clamp(9px,2.8vw,13px);
@@ -292,6 +313,12 @@ export default function CardPage() {
 
               {/* สถานที่ */}
               <div className="ov-venue">{VENUE}</div>
+
+              {/* วันที่ */}
+              <div className="ov-date">รอวันที่</div>
+
+              {/* เวลา */}
+              <div className="ov-time">รอเวลา</div>
 
               {/* บ้าน */}
               <div className="ov-house">
