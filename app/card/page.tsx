@@ -224,8 +224,8 @@ export default function CardPage() {
           top:85%;left:33%;
           width:74%;
           font-family:'Noto Serif Thai',serif;
-          font-size:16px;
-          color:#e8d8b0;
+          font-size:14.5px;
+          color:#A89060;
           letter-spacing:.5px;
           line-height:1.3;
         }
