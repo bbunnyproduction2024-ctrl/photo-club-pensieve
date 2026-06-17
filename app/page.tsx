@@ -82,7 +82,7 @@ export default function HomePage() {
             radial-gradient(ellipse at 80% 90%,rgba(60,20,0,.3) 0%,transparent 40%),
             rgba(6,4,2,.45);}
         .bg-vignette{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,transparent 40%,rgba(0,0,0,.7) 100%);}
-        .stars{position:absolute;inset:0;overflow:hidden;}
+        .stars{position:absolute;inset:0;overflow:hidden;opacity:.6;}
         .stars::before{content:'';position:absolute;inset:0;background-image:
           radial-gradient(1px 1px at 4% 8%,rgba(255,255,255,.55) 0%,transparent 100%),
           radial-gradient(1.5px 1.5px at 10% 22%,rgba(201,162,39,.7) 0%,transparent 100%),
@@ -129,7 +129,7 @@ export default function HomePage() {
           animation:twinkle 6s ease-in-out infinite alternate-reverse;}
         @keyframes twinkle{0%{opacity:.5;}100%{opacity:1;}}
         /* METEORS — ฝนดาวตก (บาง จาง น้อย) */
-        .meteors{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
+        .meteors{position:absolute;inset:0;overflow:hidden;pointer-events:none;opacity:.6;}
         .meteor{
           position:absolute;
           top:-2px;
@@ -150,7 +150,7 @@ export default function HomePage() {
           100%{height:0;    opacity:0;   transform:rotate(var(--angle)) translateY(var(--travel));}
         }
 
-        .particles{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
+        .particles{position:absolute;inset:0;overflow:hidden;pointer-events:none;opacity:.6;}
         .p{position:absolute;bottom:-10px;width:2px;height:2px;border-radius:50%;background:rgba(201,162,39,.7);animation:rise linear infinite;}
         .p:nth-child(1) {left:4%;  animation-duration:10s; animation-delay:0s;   width:1.5px;height:1.5px;}
         .p:nth-child(2) {left:11%; animation-duration:14s; animation-delay:2s;   background:rgba(255,220,100,.5);}
