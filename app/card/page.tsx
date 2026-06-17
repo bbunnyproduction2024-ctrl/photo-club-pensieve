@@ -92,47 +92,47 @@ export default function CardPage() {
         .card{position:relative;width:100%;border-radius:6px;overflow:hidden;box-shadow:0 0 60px rgba(201,162,39,.3),0 20px 60px rgba(0,0,0,.9);}
         .card-img{width:100%;display:block;}
 
-        /* NAME — ใต้ "You are invited" */
+        /* NAME — กลางกรอบชื่อ (ใต้ "You are invited") */
         .ov-name{
           position:absolute;
-          top:61%;left:50%;transform:translateX(-50%);
-          width:78%;text-align:center;
+          top:51%;left:50%;transform:translate(-50%,-50%);
+          width:76%;text-align:center;
           font-family:'Cinzel',serif;
-          font-size:clamp(13px,4.8vw,22px);
+          font-size:clamp(12px,4.2vw,20px);
           font-weight:700;
           color:#f5ede0;
           text-shadow:0 0 14px rgba(201,162,39,.7),0 2px 4px rgba(0,0,0,.9);
           line-height:1.25;word-break:break-word;
         }
 
-        /* YEAR — ใต้ชื่อ */
+        /* YEAR — บนกรอบบ้าน */
         .ov-year{
           position:absolute;
-          top:67%;left:50%;transform:translateX(-50%);
+          top:62%;left:50%;transform:translate(-50%,-50%);
           width:70%;text-align:center;
           font-family:'Cinzel',serif;
-          font-size:clamp(9px,3vw,13px);
+          font-size:clamp(8px,2.6vw,12px);
           color:rgba(201,162,39,.9);
           letter-spacing:3px;
           text-shadow:0 0 8px rgba(201,162,39,.5);
         }
 
-        /* HOUSE — ในกรอบทอง */
+        /* HOUSE — กลางกรอบบ้าน */
         .ov-house{
           position:absolute;
-          top:73%;left:50%;transform:translateX(-50%);
-          width:65%;
-          display:flex;flex-direction:column;align-items:center;gap:4px;
+          top:66%;left:50%;transform:translate(-50%,-50%);
+          width:60%;
+          display:flex;flex-direction:column;align-items:center;gap:3px;
         }
         .ov-house img{
-          width:clamp(36px,10vw,52px);
-          height:clamp(36px,10vw,52px);
+          width:clamp(28px,8vw,40px);
+          height:clamp(28px,8vw,40px);
           object-fit:contain;
-          filter:drop-shadow(0 0 8px rgba(255,255,255,.3));
+          filter:drop-shadow(0 0 6px rgba(255,255,255,.3));
         }
         .ov-house-name{
           font-family:'Cinzel',serif;
-          font-size:clamp(9px,2.8vw,13px);
+          font-size:clamp(8px,2.4vw,11px);
           font-weight:600;letter-spacing:2px;
           text-align:center;
         }

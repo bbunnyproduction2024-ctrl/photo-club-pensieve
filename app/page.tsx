@@ -90,6 +90,29 @@ export default function HomePage() {
           radial-gradient(1px 1px at 42% 95%,rgba(255,220,100,.4) 0%,transparent 100%);
           animation:twinkle 6s ease-in-out infinite alternate-reverse;}
         @keyframes twinkle{0%{opacity:.6;}100%{opacity:1;}}
+        /* RIPPLES — คลื่นน้ำ */
+        .ripples{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
+        .rpl{
+          position:absolute;
+          width:40px;height:40px;
+          margin-left:-20px;margin-top:-20px;
+          border-radius:50%;
+          border:1px solid rgba(201,162,39,.25);
+          transform:scale(0);
+          animation:rpl-expand ease-out infinite;
+        }
+        .rpl:nth-child(2){border-width:1.5px;border-color:rgba(201,162,39,.15);animation-delay:2s;left:70%;top:60%;animation-duration:10s;}
+        .rpl:nth-child(3){border-color:rgba(255,220,100,.15);animation-delay:1s;left:85%;top:25%;animation-duration:7s;}
+        .rpl:nth-child(4){animation-delay:5s;left:40%;top:75%;animation-duration:9s;}
+        .rpl:nth-child(5){border-color:rgba(201,162,39,.12);animation-delay:2.5s;left:55%;top:15%;animation-duration:11s;}
+        .rpl:nth-child(6){animation-delay:4s;left:10%;top:65%;animation-duration:6s;}
+        .rpl:nth-child(1){left:25%;top:35%;animation-duration:8s;}
+        @keyframes rpl-expand{
+          0%{transform:scale(0);opacity:.7;}
+          60%{opacity:.2;}
+          100%{transform:scale(9);opacity:0;}
+        }
+
         .particles{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
         .p{position:absolute;bottom:-10px;width:3px;height:3px;border-radius:50%;background:rgba(201,162,39,.8);animation:rise linear infinite;}
         .p:nth-child(1){left:5%;animation-duration:9s;animation-delay:0s;width:2px;height:2px;}
@@ -207,6 +230,9 @@ export default function HomePage() {
           <div className="bg-overlay"/>
           <div className="bg-vignette"/>
           <div className="stars"/>
+          <div className="ripples">
+            {[...Array(6)].map((_,i) => <div key={i} className="rpl"/>)}
+          </div>
           <div className="particles">
             {[...Array(8)].map((_,i) => <div key={i} className="p"/>)}
           </div>
