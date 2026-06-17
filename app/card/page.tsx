@@ -232,7 +232,7 @@ export default function CardPage() {
 
         .ov-date{
           position:absolute;
-          top:60%;left:33%;
+          top:75%;left:33%;
           width:74%;
           font-family:'Noto Serif Thai',serif;
           font-size:14.5px;
@@ -242,7 +242,7 @@ export default function CardPage() {
         }
         .ov-time{
           position:absolute;
-          top:70%;left:33%;
+          top:80%;left:33%;
           width:74%;
           font-family:'Noto Serif Thai',serif;
           font-size:14.5px;
