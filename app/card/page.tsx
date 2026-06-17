@@ -166,7 +166,7 @@ export default function CardPage() {
             <div className="card" ref={cardRef}>
 
               {/* Base card image */}
-              <img className="card-img" src="/Photo_Club/card.png" alt="การ์ดเชิญ" crossOrigin="anonymous"/>
+              <img className="card-img" src="/Photo_Club/card.png" alt="การ์ดเชิญ"/>
 
               {/* ชื่อ */}
               <div className="ov-name">{data.name}</div>
@@ -177,7 +177,7 @@ export default function CardPage() {
               {/* บ้าน */}
               <div className="ov-house">
                 {houseLogo && (
-                  <img src={houseLogo} alt={data.houseName} crossOrigin="anonymous"/>
+                  <img src={houseLogo} alt={data.houseName}/>
                 )}
                 <div className="ov-house-name" style={{ color: data.houseTextColor, textShadow:`0 0 10px ${data.houseAccent}80` }}>
                   {data.houseName} · {data.houseThai}

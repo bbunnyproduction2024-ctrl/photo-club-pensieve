@@ -8,6 +8,7 @@ export default function VideoPage() {
   const [blocked, setBlocked] = useState(false);
   const [ended, setEnded] = useState(false);
   const [showBtn, setShowBtn] = useState(false);
+  const [waiting, setWaiting] = useState(true);
 
   useEffect(() => {
     if (!sessionStorage.getItem('photoclub')) {
@@ -23,6 +24,8 @@ export default function VideoPage() {
     setBlocked(false);
     videoRef.current?.play();
   };
+
+  const handleCanPlay = () => setWaiting(false);
 
   const handleEnded = () => {
     setEnded(true);
@@ -45,6 +48,16 @@ export default function VideoPage() {
         @keyframes pulse{0%,100%{transform:scale(1);opacity:.8;}50%{transform:scale(1.1);opacity:1;}}
         .tap-text{font-family:'Noto Serif Thai',serif;font-size:16px;color:rgba(201,162,39,.9);letter-spacing:2px;}
         .tap-sub{font-family:'Cinzel',serif;font-size:10px;color:rgba(201,162,39,.45);letter-spacing:4px;}
+
+        /* Waiting text */
+        .waiting-text{
+          position:absolute;bottom:10%;left:0;right:0;
+          text-align:center;pointer-events:none;z-index:5;
+          animation:textPulse 2.5s ease-in-out infinite;
+        }
+        .waiting-main{font-family:'Noto Serif Thai',serif;font-size:15px;color:rgba(201,162,39,.85);letter-spacing:2px;}
+        .waiting-dots{display:inline-block;font-family:'Cinzel',serif;font-size:10px;color:rgba(201,162,39,.45);letter-spacing:4px;margin-top:4px;}
+        @keyframes textPulse{0%,100%{opacity:.6;}50%{opacity:1;}}
 
         /* End button */
         .btn-wrap{pointer-events:all;display:flex;flex-direction:column;align-items:center;gap:12px;animation:fadeUp .6s ease both;}
@@ -70,7 +83,16 @@ export default function VideoPage() {
           src="/Photo_Club/video-owl-note-new.mp4"
           playsInline
           onEnded={handleEnded}
+          onCanPlay={handleCanPlay}
         />
+
+        {/* ข้อความระหว่างรอ */}
+        {waiting && !blocked && !ended && (
+          <div className="waiting-text">
+            <div className="waiting-main">กรุณารอนกฮูกของท่าน</div>
+            <div className="waiting-dots">PLEASE WAIT ✦</div>
+          </div>
+        )}
 
         {/* แสดงเฉพาะตอนบราวเซอร์บล็อก autoplay */}
         {blocked && (

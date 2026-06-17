@@ -64,13 +64,13 @@ export default function HomePage() {
 
         /* BG */
         .bg{position:fixed;inset:0;z-index:0;}
-        .bg-img{width:100%;height:100%;object-fit:cover;opacity:.25;}
+        .bg-img{width:100%;height:100%;object-fit:cover;opacity:.5;}
         .bg-overlay{position:absolute;inset:0;
           background:
-            radial-gradient(ellipse at 50% -10%,rgba(120,60,5,.7) 0%,transparent 55%),
-            radial-gradient(ellipse at 20% 80%,rgba(80,30,0,.4) 0%,transparent 40%),
-            radial-gradient(ellipse at 80% 90%,rgba(60,20,0,.4) 0%,transparent 40%),
-            linear-gradient(180deg,#0a0500 0%,#060402 50%,#0a0500 100%);}
+            radial-gradient(ellipse at 50% -10%,rgba(120,60,5,.55) 0%,transparent 55%),
+            radial-gradient(ellipse at 20% 80%,rgba(80,30,0,.3) 0%,transparent 40%),
+            radial-gradient(ellipse at 80% 90%,rgba(60,20,0,.3) 0%,transparent 40%),
+            rgba(6,4,2,.45);}
         .bg-vignette{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,transparent 40%,rgba(0,0,0,.7) 100%);}
         .stars{position:absolute;inset:0;overflow:hidden;}
         .stars::before,.stars::after{content:'';position:absolute;inset:0;background-image:
