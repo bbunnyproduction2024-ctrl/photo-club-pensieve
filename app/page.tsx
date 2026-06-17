@@ -170,7 +170,7 @@ export default function HomePage() {
         @keyframes rise{0%{transform:translateY(0);opacity:0;}8%{opacity:.85;}75%{opacity:.45;}100%{transform:translateY(-100vh);opacity:0;}}
 
         /* HEADER */
-        .content{position:relative;z-index:1;width:100%;max-width:500px;display:flex;flex-direction:column;align-items:center;}
+        .content{position:relative;z-index:1;width:100%;max-width:680px;display:flex;flex-direction:column;align-items:center;}
         .logo{width:100px;height:100px;object-fit:contain;filter:drop-shadow(0 0 16px rgba(201,162,39,.5));margin-bottom:8px;}
         .presents{font-family:'Cinzel',serif;font-size:9px;letter-spacing:5px;color:#c9a227;opacity:.8;margin-bottom:8px;}
         .deco-line{display:flex;align-items:center;gap:8px;width:200px;margin:0 auto 8px;}
