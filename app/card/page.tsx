@@ -221,7 +221,7 @@ export default function CardPage() {
         /* VENUE — แถว VENUE ในส่วนรายละเอียดงาน */
         .ov-venue{
           position:absolute;
-          top:86%;left:33%;
+          top:85%;left:33%;
           width:74%;
           font-family:'Noto Serif Thai',serif;
           font-size:16px;
