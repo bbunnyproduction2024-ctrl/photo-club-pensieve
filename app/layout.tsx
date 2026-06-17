@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import AudioManager from "./AudioManager";
 
 export const metadata: Metadata = {
   title: "Pensieve · อ่างแห่งความทรงจำ",
@@ -9,7 +10,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="th">
-      <body>{children}</body>
+      <body>
+        <AudioManager />
+        {children}
+      </body>
     </html>
   );
 }

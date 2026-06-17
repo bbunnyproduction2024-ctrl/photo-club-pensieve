@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 const EVENT = {
   sub: 'อ่างแห่งความทรงจำ',
   date: '...',
-  venue: '...',
+  venue: 'ห้องนิทรรศการภาพถ่าย',
   time: '...',
 };
 
