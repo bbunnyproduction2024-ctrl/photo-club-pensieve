@@ -93,7 +93,7 @@ export default function CardPage() {
         .bg-ov{position:absolute;inset:0;background:rgba(0,0,0,.45);}
 
         /* STARS */
-        .stars{position:absolute;inset:0;overflow:hidden;opacity:.6;}
+        .stars{position:absolute;inset:0;overflow:hidden;opacity:.8;}
         .stars::before{content:'';position:absolute;inset:0;background-image:
           radial-gradient(1px 1px at 4% 8%,rgba(255,255,255,.55) 0%,transparent 100%),
           radial-gradient(1.5px 1.5px at 10% 22%,rgba(201,162,39,.7) 0%,transparent 100%),
@@ -141,7 +141,7 @@ export default function CardPage() {
         @keyframes twinkle{0%{opacity:.5;}100%{opacity:1;}}
 
         /* METEORS */
-        .meteors{position:absolute;inset:0;overflow:hidden;pointer-events:none;opacity:.6;}
+        .meteors{position:absolute;inset:0;overflow:hidden;pointer-events:none;opacity:.8;}
         .meteor{
           position:absolute;top:-2px;width:1px;height:0;
           background:linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,240,180,.35) 50%,rgba(201,162,39,.45) 100%);
@@ -158,7 +158,7 @@ export default function CardPage() {
         }
 
         /* PARTICLES */
-        .particles{position:absolute;inset:0;overflow:hidden;pointer-events:none;opacity:.6;}
+        .particles{position:absolute;inset:0;overflow:hidden;pointer-events:none;opacity:.8;}
         .p{position:absolute;bottom:-10px;width:2px;height:2px;border-radius:50%;background:rgba(201,162,39,.7);animation:rise linear infinite;}
         .p:nth-child(1) {left:4%;  animation-duration:10s;animation-delay:0s;   width:1.5px;height:1.5px;}
         .p:nth-child(2) {left:14%; animation-duration:14s;animation-delay:2s;   background:rgba(255,220,100,.5);}
@@ -228,7 +228,7 @@ export default function CardPage() {
         /* Buttons */
         .btn-dl{width:100%;padding:15px;background:linear-gradient(135deg,#4a1e06,#c9a227 40%,#e8c060 50%,#c9a227 60%,#4a1e06);border:none;border-radius:10px;color:#0a0500;font-size:14px;font-family:'Cinzel',serif;font-weight:700;letter-spacing:3px;cursor:pointer;transition:all .2s;box-shadow:0 4px 24px rgba(201,162,39,.4);}
         .btn-dl:hover{box-shadow:0 4px 40px rgba(201,162,39,.65);transform:translateY(-1px);}
-        .btn-dl:disabled{opacity:.6;cursor:not-allowed;transform:none;}
+        .btn-dl:disabled{opacity:.8;cursor:not-allowed;transform:none;}
         .btn-back{background:none;border:1px solid rgba(201,162,39,.2);border-radius:8px;padding:10px;color:rgba(201,162,39,.45);font-size:11px;font-family:'Cinzel',serif;cursor:pointer;transition:all .2s;width:100%;text-align:center;letter-spacing:2px;}
         .btn-back:hover{border-color:rgba(201,162,39,.5);color:#c9a227;}
 

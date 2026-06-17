@@ -82,7 +82,7 @@ export default function HomePage() {
             radial-gradient(ellipse at 80% 90%,rgba(60,20,0,.3) 0%,transparent 40%),
             rgba(6,4,2,.45);}
         .bg-vignette{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,transparent 40%,rgba(0,0,0,.7) 100%);}
-        .stars{position:absolute;inset:0;overflow:hidden;opacity:.6;}
+        .stars{position:absolute;inset:0;overflow:hidden;opacity:.8;}
         .stars::before{content:'';position:absolute;inset:0;background-image:
           radial-gradient(1px 1px at 4% 8%,rgba(255,255,255,.55) 0%,transparent 100%),
           radial-gradient(1.5px 1.5px at 10% 22%,rgba(201,162,39,.7) 0%,transparent 100%),
@@ -129,7 +129,7 @@ export default function HomePage() {
           animation:twinkle 6s ease-in-out infinite alternate-reverse;}
         @keyframes twinkle{0%{opacity:.5;}100%{opacity:1;}}
         /* METEORS — ฝนดาวตก (บาง จาง น้อย) */
-        .meteors{position:absolute;inset:0;overflow:hidden;pointer-events:none;opacity:.6;}
+        .meteors{position:absolute;inset:0;overflow:hidden;pointer-events:none;opacity:.8;}
         .meteor{
           position:absolute;
           top:-2px;
@@ -150,7 +150,7 @@ export default function HomePage() {
           100%{height:0;    opacity:0;   transform:rotate(var(--angle)) translateY(var(--travel));}
         }
 
-        .particles{position:absolute;inset:0;overflow:hidden;pointer-events:none;opacity:.6;}
+        .particles{position:absolute;inset:0;overflow:hidden;pointer-events:none;opacity:.8;}
         .p{position:absolute;bottom:-10px;width:2px;height:2px;border-radius:50%;background:rgba(201,162,39,.7);animation:rise linear infinite;}
         .p:nth-child(1) {left:4%;  animation-duration:10s; animation-delay:0s;   width:1.5px;height:1.5px;}
         .p:nth-child(2) {left:11%; animation-duration:14s; animation-delay:2s;   background:rgba(255,220,100,.5);}
@@ -197,7 +197,7 @@ export default function HomePage() {
           0%{box-shadow:0 8px 40px rgba(0,0,0,.7),0 0 40px rgba(120,70,0,.1);}
           100%{box-shadow:0 8px 40px rgba(0,0,0,.7),0 0 80px rgba(180,110,0,.25);}
         }
-        .deco-c{position:absolute;width:18px;height:18px;border-color:#c9a227;border-style:solid;opacity:.6;}
+        .deco-c{position:absolute;width:18px;height:18px;border-color:#c9a227;border-style:solid;opacity:.8;}
         .dc-tl{top:8px;left:8px;border-width:2px 0 0 2px;}
         .dc-tr{top:8px;right:8px;border-width:2px 2px 0 0;}
         .dc-bl{bottom:8px;left:8px;border-width:0 0 2px 2px;}
@@ -292,7 +292,7 @@ export default function HomePage() {
           box-shadow:0 4px 24px rgba(201,162,39,.35);
         }
         .submit-btn:hover{box-shadow:0 4px 40px rgba(201,162,39,.6);transform:translateY(-1px);}
-        .submit-btn:disabled{opacity:.6;cursor:not-allowed;transform:none;}
+        .submit-btn:disabled{opacity:.8;cursor:not-allowed;transform:none;}
       `}</style>
 
       <div className="page">
