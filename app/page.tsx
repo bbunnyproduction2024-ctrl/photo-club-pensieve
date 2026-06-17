@@ -18,13 +18,17 @@ const HOUSES = [
 
 const YEARS = ['Year 1','Year 2','Year 3','Year 4','Year 5','Year 6','Year 7'];
 
-const RIPPLES = [
-  { x:'22%', y:'40%', dur:9,   del:0   },
-  { x:'70%', y:'55%', dur:12,  del:3.5 },
-  { x:'82%', y:'18%', dur:7.5, del:1.2 },
-  { x:'38%', y:'74%', dur:10,  del:5.8 },
-  { x:'10%', y:'62%', dur:11,  del:2.8 },
-  { x:'55%', y:'28%', dur:8.5, del:6.5 },
+const METEORS = [
+  { left:'15%',  dur:4.5, del:0,   angle:15, travel:'110vh' },
+  { left:'30%',  dur:3.8, del:1.8, angle:18, travel:'105vh' },
+  { left:'48%',  dur:5.2, del:0.6, angle:12, travel:'115vh' },
+  { left:'62%',  dur:3.5, del:3.2, angle:20, travel:'108vh' },
+  { left:'75%',  dur:4.8, del:2.1, angle:14, travel:'112vh' },
+  { left:'88%',  dur:3.2, del:4.5, angle:16, travel:'106vh' },
+  { left:'8%',   dur:5.5, del:3.8, angle:13, travel:'118vh' },
+  { left:'54%',  dur:4.0, del:5.5, angle:19, travel:'109vh' },
+  { left:'40%',  dur:3.6, del:7.0, angle:11, travel:'113vh' },
+  { left:'70%',  dur:4.3, del:1.2, angle:17, travel:'107vh' },
 ];
 
 export default function HomePage() {
@@ -99,23 +103,26 @@ export default function HomePage() {
           radial-gradient(1px 1px at 42% 95%,rgba(255,220,100,.4) 0%,transparent 100%);
           animation:twinkle 6s ease-in-out infinite alternate-reverse;}
         @keyframes twinkle{0%{opacity:.6;}100%{opacity:1;}}
-        /* RIPPLES — คลื่นน้ำ perspective */
-        .ripples{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
-        .rpl-ring{
+        /* METEORS — ฝนดาวตก */
+        .meteors{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
+        .meteor{
           position:absolute;
-          width:14px;height:14px;
-          border-radius:50%;
-          border:1.5px solid rgba(201,162,39,.45);
-          /* perspective: เอียงให้ดูเหมือนผิวน้ำ */
-          transform:translate(-50%,-50%) scaleY(0.36) scale(0.02);
-          animation:rpl-out ease-out infinite;
+          top:-2px;
+          width:2px;
+          height:0;
+          background:linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,240,180,.9) 40%,rgba(201,162,39,1) 100%);
+          border-radius:0 0 2px 2px;
+          box-shadow:0 0 4px 1px rgba(201,162,39,.5);
+          transform-origin:top center;
+          animation:meteor-fall linear infinite;
         }
-        @keyframes rpl-out{
-          0%  {transform:translate(-50%,-50%) scaleY(0.36) scale(0.02); opacity:.75; border-color:rgba(201,162,39,.5);}
-          8%  {opacity:.55;}
-          35% {opacity:.3;  border-color:rgba(201,162,39,.25);}
-          70% {opacity:.07; border-color:rgba(201,162,39,.08);}
-          100%{transform:translate(-50%,-50%) scaleY(0.36) scale(22);  opacity:0;  border-color:rgba(201,162,39,0);}
+        @keyframes meteor-fall{
+          0%  {height:0;      opacity:0;   transform:rotate(var(--angle)) translateY(0);}
+          5%  {height:0;      opacity:0;}
+          15% {height:80px;   opacity:1;}
+          80% {height:120px;  opacity:.8;}
+          95% {height:60px;   opacity:.2;}
+          100%{height:0;      opacity:0;   transform:rotate(var(--angle)) translateY(var(--travel));}
         }
 
         .particles{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
@@ -235,21 +242,20 @@ export default function HomePage() {
           <div className="bg-overlay"/>
           <div className="bg-vignette"/>
           <div className="stars"/>
-          <div className="ripples">
-            {RIPPLES.flatMap((r, i) =>
-              [0, 0.9, 1.8].map((off, j) => (
-                <div
-                  key={`${i}-${j}`}
-                  className="rpl-ring"
-                  style={{
-                    left: r.x,
-                    top: r.y,
-                    animationDuration: `${r.dur}s`,
-                    animationDelay: `${r.del + off}s`,
-                  }}
-                />
-              ))
-            )}
+          <div className="meteors">
+            {METEORS.map((m, i) => (
+              <div
+                key={i}
+                className="meteor"
+                style={{
+                  left: m.left,
+                  animationDuration: `${m.dur}s`,
+                  animationDelay: `${m.del}s`,
+                  '--angle': `${m.angle}deg`,
+                  '--travel': m.travel,
+                } as React.CSSProperties}
+              />
+            ))}
           </div>
           <div className="particles">
             {[...Array(8)].map((_,i) => <div key={i} className="p"/>)}
