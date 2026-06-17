@@ -19,16 +19,11 @@ const HOUSES = [
 const YEARS = ['Year 1','Year 2','Year 3','Year 4','Year 5','Year 6','Year 7'];
 
 const METEORS = [
-  { left:'15%',  dur:4.5, del:0,   angle:15, travel:'110vh' },
-  { left:'30%',  dur:3.8, del:1.8, angle:18, travel:'105vh' },
-  { left:'48%',  dur:5.2, del:0.6, angle:12, travel:'115vh' },
-  { left:'62%',  dur:3.5, del:3.2, angle:20, travel:'108vh' },
-  { left:'75%',  dur:4.8, del:2.1, angle:14, travel:'112vh' },
-  { left:'88%',  dur:3.2, del:4.5, angle:16, travel:'106vh' },
-  { left:'8%',   dur:5.5, del:3.8, angle:13, travel:'118vh' },
-  { left:'54%',  dur:4.0, del:5.5, angle:19, travel:'109vh' },
-  { left:'40%',  dur:3.6, del:7.0, angle:11, travel:'113vh' },
-  { left:'70%',  dur:4.3, del:1.2, angle:17, travel:'107vh' },
+  { left:'18%',  dur:6.0, del:0,   angle:14, travel:'112vh' },
+  { left:'45%',  dur:7.5, del:4.2, angle:17, travel:'108vh' },
+  { left:'70%',  dur:5.5, del:8.0, angle:13, travel:'115vh' },
+  { left:'85%',  dur:8.0, del:2.5, angle:16, travel:'110vh' },
+  { left:'32%',  dur:6.5, del:6.5, angle:15, travel:'113vh' },
 ];
 
 export default function HomePage() {
@@ -86,56 +81,91 @@ export default function HomePage() {
             rgba(6,4,2,.45);}
         .bg-vignette{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,transparent 40%,rgba(0,0,0,.7) 100%);}
         .stars{position:absolute;inset:0;overflow:hidden;}
-        .stars::before,.stars::after{content:'';position:absolute;inset:0;background-image:
-          radial-gradient(1px 1px at 10% 15%,rgba(201,162,39,.6) 0%,transparent 100%),
-          radial-gradient(1px 1px at 25% 35%,rgba(255,255,255,.4) 0%,transparent 100%),
-          radial-gradient(1px 1px at 40% 10%,rgba(201,162,39,.5) 0%,transparent 100%),
-          radial-gradient(1px 1px at 55% 45%,rgba(255,255,255,.3) 0%,transparent 100%),
-          radial-gradient(1px 1px at 70% 20%,rgba(201,162,39,.6) 0%,transparent 100%),
-          radial-gradient(1px 1px at 85% 60%,rgba(255,255,255,.4) 0%,transparent 100%),
-          radial-gradient(1.5px 1.5px at 5% 50%,rgba(201,162,39,.7) 0%,transparent 100%),
-          radial-gradient(1.5px 1.5px at 75% 5%,rgba(201,162,39,.6) 0%,transparent 100%);
+        .stars::before{content:'';position:absolute;inset:0;background-image:
+          radial-gradient(1px 1px at 4% 8%,rgba(255,255,255,.55) 0%,transparent 100%),
+          radial-gradient(1.5px 1.5px at 10% 22%,rgba(201,162,39,.7) 0%,transparent 100%),
+          radial-gradient(1px 1px at 17% 5%,rgba(255,240,180,.5) 0%,transparent 100%),
+          radial-gradient(1px 1px at 23% 38%,rgba(255,255,255,.4) 0%,transparent 100%),
+          radial-gradient(2px 2px at 29% 14%,rgba(201,162,39,.65) 0%,transparent 100%),
+          radial-gradient(1px 1px at 36% 48%,rgba(255,255,255,.35) 0%,transparent 100%),
+          radial-gradient(1px 1px at 42% 6%,rgba(201,162,39,.6) 0%,transparent 100%),
+          radial-gradient(1.5px 1.5px at 49% 30%,rgba(255,220,100,.55) 0%,transparent 100%),
+          radial-gradient(1px 1px at 55% 18%,rgba(255,255,255,.45) 0%,transparent 100%),
+          radial-gradient(1px 1px at 62% 42%,rgba(201,162,39,.5) 0%,transparent 100%),
+          radial-gradient(2px 2px at 68% 9%,rgba(201,162,39,.7) 0%,transparent 100%),
+          radial-gradient(1px 1px at 74% 55%,rgba(255,255,255,.3) 0%,transparent 100%),
+          radial-gradient(1px 1px at 80% 20%,rgba(201,162,39,.6) 0%,transparent 100%),
+          radial-gradient(1.5px 1.5px at 87% 35%,rgba(255,240,180,.55) 0%,transparent 100%),
+          radial-gradient(1px 1px at 93% 12%,rgba(255,255,255,.5) 0%,transparent 100%),
+          radial-gradient(1px 1px at 7% 62%,rgba(201,162,39,.45) 0%,transparent 100%),
+          radial-gradient(1.5px 1.5px at 33% 70%,rgba(255,255,255,.4) 0%,transparent 100%),
+          radial-gradient(1px 1px at 58% 65%,rgba(201,162,39,.5) 0%,transparent 100%),
+          radial-gradient(1px 1px at 78% 72%,rgba(255,240,180,.4) 0%,transparent 100%),
+          radial-gradient(1px 1px at 96% 58%,rgba(255,255,255,.35) 0%,transparent 100%);
           animation:twinkle 4s ease-in-out infinite alternate;}
-        .stars::after{background-image:
-          radial-gradient(1px 1px at 18% 25%,rgba(201,162,39,.5) 0%,transparent 100%),
-          radial-gradient(1px 1px at 62% 30%,rgba(201,162,39,.6) 0%,transparent 100%),
-          radial-gradient(1.5px 1.5px at 88% 15%,rgba(201,162,39,.7) 0%,transparent 100%),
-          radial-gradient(1px 1px at 42% 95%,rgba(255,220,100,.4) 0%,transparent 100%);
+        .stars::after{content:'';position:absolute;inset:0;background-image:
+          radial-gradient(1px 1px at 2% 35%,rgba(201,162,39,.5) 0%,transparent 100%),
+          radial-gradient(1px 1px at 13% 52%,rgba(255,255,255,.4) 0%,transparent 100%),
+          radial-gradient(2px 2px at 20% 16%,rgba(201,162,39,.65) 0%,transparent 100%),
+          radial-gradient(1px 1px at 27% 60%,rgba(255,240,180,.45) 0%,transparent 100%),
+          radial-gradient(1px 1px at 38% 26%,rgba(255,255,255,.5) 0%,transparent 100%),
+          radial-gradient(1.5px 1.5px at 45% 75%,rgba(201,162,39,.55) 0%,transparent 100%),
+          radial-gradient(1px 1px at 52% 50%,rgba(255,255,255,.35) 0%,transparent 100%),
+          radial-gradient(1px 1px at 60% 80%,rgba(201,162,39,.45) 0%,transparent 100%),
+          radial-gradient(2px 2px at 66% 28%,rgba(255,240,180,.6) 0%,transparent 100%),
+          radial-gradient(1px 1px at 71% 88%,rgba(255,255,255,.3) 0%,transparent 100%),
+          radial-gradient(1px 1px at 76% 45%,rgba(201,162,39,.55) 0%,transparent 100%),
+          radial-gradient(1.5px 1.5px at 83% 65%,rgba(255,255,255,.45) 0%,transparent 100%),
+          radial-gradient(1px 1px at 90% 80%,rgba(201,162,39,.4) 0%,transparent 100%),
+          radial-gradient(1px 1px at 97% 42%,rgba(255,240,180,.5) 0%,transparent 100%),
+          radial-gradient(1px 1px at 15% 85%,rgba(255,255,255,.35) 0%,transparent 100%),
+          radial-gradient(1.5px 1.5px at 44% 90%,rgba(201,162,39,.5) 0%,transparent 100%),
+          radial-gradient(1px 1px at 64% 92%,rgba(255,255,255,.3) 0%,transparent 100%),
+          radial-gradient(1px 1px at 85% 88%,rgba(201,162,39,.45) 0%,transparent 100%),
+          radial-gradient(2px 2px at 50% 3%,rgba(201,162,39,.7) 0%,transparent 100%),
+          radial-gradient(1px 1px at 8% 78%,rgba(255,240,180,.4) 0%,transparent 100%);
           animation:twinkle 6s ease-in-out infinite alternate-reverse;}
-        @keyframes twinkle{0%{opacity:.6;}100%{opacity:1;}}
-        /* METEORS — ฝนดาวตก */
+        @keyframes twinkle{0%{opacity:.5;}100%{opacity:1;}}
+        /* METEORS — ฝนดาวตก (บาง จาง น้อย) */
         .meteors{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
         .meteor{
           position:absolute;
           top:-2px;
-          width:2px;
+          width:1px;
           height:0;
-          background:linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,240,180,.9) 40%,rgba(201,162,39,1) 100%);
-          border-radius:0 0 2px 2px;
-          box-shadow:0 0 4px 1px rgba(201,162,39,.5);
+          background:linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,240,180,.35) 50%,rgba(201,162,39,.45) 100%);
+          border-radius:0 0 1px 1px;
+          box-shadow:0 0 1px rgba(201,162,39,.2);
           transform-origin:top center;
           animation:meteor-fall linear infinite;
         }
         @keyframes meteor-fall{
-          0%  {height:0;      opacity:0;   transform:rotate(var(--angle)) translateY(0);}
-          5%  {height:0;      opacity:0;}
-          15% {height:80px;   opacity:1;}
-          80% {height:120px;  opacity:.8;}
-          95% {height:60px;   opacity:.2;}
-          100%{height:0;      opacity:0;   transform:rotate(var(--angle)) translateY(var(--travel));}
+          0%  {height:0;    opacity:0;   transform:rotate(var(--angle)) translateY(0);}
+          8%  {height:0;    opacity:0;}
+          20% {height:35px; opacity:.35;}
+          75% {height:45px; opacity:.25;}
+          92% {height:20px; opacity:.05;}
+          100%{height:0;    opacity:0;   transform:rotate(var(--angle)) translateY(var(--travel));}
         }
 
         .particles{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
-        .p{position:absolute;bottom:-10px;width:3px;height:3px;border-radius:50%;background:rgba(201,162,39,.8);animation:rise linear infinite;}
-        .p:nth-child(1){left:5%;animation-duration:9s;animation-delay:0s;width:2px;height:2px;}
-        .p:nth-child(2){left:15%;animation-duration:12s;animation-delay:2s;background:rgba(255,220,100,.6);}
-        .p:nth-child(3){left:28%;animation-duration:8s;animation-delay:4s;width:2px;height:2px;}
-        .p:nth-child(4){left:42%;animation-duration:11s;animation-delay:1s;}
-        .p:nth-child(5){left:58%;animation-duration:10s;animation-delay:3s;width:4px;height:4px;background:rgba(255,220,100,.5);}
-        .p:nth-child(6){left:72%;animation-duration:9s;animation-delay:5s;width:2px;height:2px;}
-        .p:nth-child(7){left:85%;animation-duration:13s;animation-delay:0.5s;}
-        .p:nth-child(8){left:95%;animation-duration:8s;animation-delay:3.5s;}
-        @keyframes rise{0%{transform:translateY(0);opacity:0;}10%{opacity:.8;}80%{opacity:.4;}100%{transform:translateY(-100vh);opacity:0;}}
+        .p{position:absolute;bottom:-10px;width:2px;height:2px;border-radius:50%;background:rgba(201,162,39,.7);animation:rise linear infinite;}
+        .p:nth-child(1) {left:4%;  animation-duration:10s; animation-delay:0s;   width:1.5px;height:1.5px;}
+        .p:nth-child(2) {left:11%; animation-duration:14s; animation-delay:2s;   background:rgba(255,220,100,.5);}
+        .p:nth-child(3) {left:18%; animation-duration:9s;  animation-delay:5s;   width:1px;height:1px;}
+        .p:nth-child(4) {left:25%; animation-duration:12s; animation-delay:1s;   background:rgba(201,162,39,.6);}
+        .p:nth-child(5) {left:33%; animation-duration:11s; animation-delay:7s;   width:3px;height:3px;background:rgba(255,220,100,.4);}
+        .p:nth-child(6) {left:40%; animation-duration:8s;  animation-delay:3s;   width:1.5px;height:1.5px;}
+        .p:nth-child(7) {left:48%; animation-duration:13s; animation-delay:0.5s; background:rgba(255,240,180,.5);}
+        .p:nth-child(8) {left:56%; animation-duration:10s; animation-delay:4s;   width:1px;height:1px;}
+        .p:nth-child(9) {left:63%; animation-duration:9s;  animation-delay:6s;   width:2px;height:2px;}
+        .p:nth-child(10){left:70%; animation-duration:12s; animation-delay:2.5s; background:rgba(201,162,39,.55);}
+        .p:nth-child(11){left:77%; animation-duration:11s; animation-delay:8s;   width:1.5px;height:1.5px;}
+        .p:nth-child(12){left:83%; animation-duration:7s;  animation-delay:1.5s; background:rgba(255,220,100,.45);}
+        .p:nth-child(13){left:89%; animation-duration:14s; animation-delay:4.5s; width:1px;height:1px;}
+        .p:nth-child(14){left:94%; animation-duration:10s; animation-delay:3.5s; background:rgba(255,240,180,.5);}
+        .p:nth-child(15){left:8%;  animation-duration:15s; animation-delay:9s;   width:3px;height:3px;background:rgba(201,162,39,.4);}
+        @keyframes rise{0%{transform:translateY(0);opacity:0;}8%{opacity:.85;}75%{opacity:.45;}100%{transform:translateY(-100vh);opacity:0;}}
 
         /* HEADER */
         .content{position:relative;z-index:1;width:100%;max-width:500px;display:flex;flex-direction:column;align-items:center;}
@@ -258,7 +288,7 @@ export default function HomePage() {
             ))}
           </div>
           <div className="particles">
-            {[...Array(8)].map((_,i) => <div key={i} className="p"/>)}
+            {[...Array(15)].map((_,i) => <div key={i} className="p"/>)}
           </div>
         </div>
 

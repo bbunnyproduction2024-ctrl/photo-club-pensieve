@@ -95,7 +95,7 @@ export default function CardPage() {
         /* NAME — กลางกรอบชื่อ */
         .ov-name{
           position:absolute;
-          top:54%;left:50%;transform:translate(-50%,-50%);
+          top:53%;left:50%;transform:translate(-50%,-50%);
           width:76%;text-align:center;
           font-family:'Cinzel',serif;
           font-size:clamp(12px,4.2vw,20px);
@@ -108,7 +108,7 @@ export default function CardPage() {
         /* YEAR — บนกรอบบ้าน */
         .ov-year{
           position:absolute;
-          top:59%;left:50%;transform:translate(-50%,-50%);
+          top:61%;left:50%;transform:translate(-50%,-50%);
           width:70%;text-align:center;
           font-family:'Cinzel',serif;
           font-size:clamp(8px,2.6vw,12px);
@@ -120,7 +120,7 @@ export default function CardPage() {
         /* HOUSE — logo ซ้าย + ชื่อขวา */
         .ov-house{
           position:absolute;
-          top:66%;left:50%;transform:translate(-50%,-50%);
+          top:67%;left:50%;transform:translate(-50%,-50%);
           width:62%;
           display:flex;flex-direction:row;align-items:center;justify-content:center;gap:8px;
         }
