@@ -293,6 +293,23 @@ export default function HomePage() {
         }
         .submit-btn:hover{box-shadow:0 4px 40px rgba(201,162,39,.6);transform:translateY(-1px);}
         .submit-btn:disabled{opacity:.8;cursor:not-allowed;transform:none;}
+
+        /* MOBILE — เรียงแนวตั้ง */
+        @media(max-width:640px){
+          .top-row{grid-template-columns:1fr;}
+          .form-grid{grid-template-columns:1fr;}
+          .house-btn{min-height:80px;padding:10px 4px;}
+          .house-logo{width:40px;height:40px;}
+          .house-name{font-size:10px;}
+          .house-thai{font-size:10px;}
+          .prof-btn{padding:14px 8px;font-size:12px;}
+          .ybtn{padding:11px 4px;font-size:11px;}
+          .custom-yr{padding:11px 12px;font-size:13px;}
+          .finput{padding:13px 14px;font-size:14px;}
+          .flabel{font-size:9px;}
+          .form-card{padding:20px 16px 24px;}
+          .submit-btn{padding:16px;font-size:14px;}
+        }
       `}</style>
 
       <div className="page">
