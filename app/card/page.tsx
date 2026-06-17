@@ -92,10 +92,10 @@ export default function CardPage() {
         .card{position:relative;width:100%;border-radius:6px;overflow:hidden;box-shadow:0 0 60px rgba(201,162,39,.3),0 20px 60px rgba(0,0,0,.9);}
         .card-img{width:100%;display:block;}
 
-        /* NAME — กลางกรอบชื่อ (ใต้ "You are invited") */
+        /* NAME — กลางกรอบชื่อ */
         .ov-name{
           position:absolute;
-          top:51%;left:50%;transform:translate(-50%,-50%);
+          top:54%;left:50%;transform:translate(-50%,-50%);
           width:76%;text-align:center;
           font-family:'Cinzel',serif;
           font-size:clamp(12px,4.2vw,20px);
@@ -108,7 +108,7 @@ export default function CardPage() {
         /* YEAR — บนกรอบบ้าน */
         .ov-year{
           position:absolute;
-          top:62%;left:50%;transform:translate(-50%,-50%);
+          top:59%;left:50%;transform:translate(-50%,-50%);
           width:70%;text-align:center;
           font-family:'Cinzel',serif;
           font-size:clamp(8px,2.6vw,12px);
@@ -117,12 +117,12 @@ export default function CardPage() {
           text-shadow:0 0 8px rgba(201,162,39,.5);
         }
 
-        /* HOUSE — กลางกรอบบ้าน */
+        /* HOUSE — logo ซ้าย + ชื่อขวา */
         .ov-house{
           position:absolute;
           top:66%;left:50%;transform:translate(-50%,-50%);
-          width:60%;
-          display:flex;flex-direction:column;align-items:center;gap:3px;
+          width:62%;
+          display:flex;flex-direction:row;align-items:center;justify-content:center;gap:8px;
         }
         .ov-house img{
           width:clamp(28px,8vw,40px);
@@ -132,9 +132,10 @@ export default function CardPage() {
         }
         .ov-house-name{
           font-family:'Cinzel',serif;
-          font-size:clamp(8px,2.4vw,11px);
+          font-size:clamp(9px,2.8vw,13px);
           font-weight:600;letter-spacing:2px;
-          text-align:center;
+          text-align:left;
+          white-space:nowrap;
         }
 
 
@@ -180,7 +181,7 @@ export default function CardPage() {
                   <img src={houseLogo} alt={data.houseName}/>
                 )}
                 <div className="ov-house-name" style={{ color: data.houseTextColor, textShadow:`0 0 10px ${data.houseAccent}80` }}>
-                  {data.houseName} · {data.houseThai}
+                  {data.houseName}
                 </div>
               </div>
 

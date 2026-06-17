@@ -16,7 +16,7 @@ const HOUSES = [
   { id: 'slytherin', name: 'Slytherin', thai: 'สลิธีริน', bg: '#1A472A', accent: '#AAAAAA', textColor: '#CCCCCC', logo: '/Photo_Club/logo_Slytherin.png' },
 ];
 
-const YEARS = ['ปี 1','ปี 2','ปี 3','ปี 4','ปี 5','ปี 6','ปี 7'];
+const YEARS = ['Year 1','Year 2','Year 3','Year 4','Year 5','Year 6','Year 7'];
 
 const RIPPLES = [
   { x:'22%', y:'40%', dur:9,   del:0   },
