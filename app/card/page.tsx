@@ -15,6 +15,8 @@ type Data = {
   letter: string;
 };
 
+const VENUE = 'ห้องนิทรรศการภาพถ่าย';
+
 const CARD_METEORS = [
   { left:'18%', dur:6.0, del:0,   angle:14, travel:'112vh' },
   { left:'45%', dur:7.5, del:4.2, angle:17, travel:'108vh' },
@@ -216,6 +218,18 @@ export default function CardPage() {
           object-fit:contain;
           filter:drop-shadow(0 0 6px rgba(255,255,255,.3));
         }
+        /* VENUE — แถว VENUE ในส่วนรายละเอียดงาน */
+        .ov-venue{
+          position:absolute;
+          top:91%;left:21%;
+          width:74%;
+          font-family:'Noto Serif Thai',serif;
+          font-size:clamp(7px,2vw,10px);
+          color:#e8d8b0;
+          letter-spacing:.5px;
+          line-height:1.3;
+        }
+
         .ov-house-name{
           font-family:'Cinzel',serif;
           font-size:clamp(9px,2.8vw,13px);
@@ -275,6 +289,9 @@ export default function CardPage() {
 
               {/* ชั้นปี */}
               <div className="ov-year">{data.year}</div>
+
+              {/* สถานที่ */}
+              <div className="ov-venue">{VENUE}</div>
 
               {/* บ้าน */}
               <div className="ov-house">
