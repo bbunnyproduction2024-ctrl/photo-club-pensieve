@@ -203,7 +203,7 @@ export default function HomePage() {
 
       <div className="page">
         <div className="bg">
-          <img className="bg-img" src="/Photo_Club/pro_photo.png" alt=""/>
+          <img className="bg-img" src="/Photo_Club/background.png" alt=""/>
           <div className="bg-overlay"/>
           <div className="bg-vignette"/>
           <div className="stars"/>
