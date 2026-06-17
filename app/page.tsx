@@ -187,8 +187,8 @@ export default function HomePage() {
           width:100%;
           background:rgba(8,5,2,.8);
           border:1px solid rgba(201,162,39,.4);
-          border-radius:16px;
-          padding:20px 18px 22px;
+          border-radius:20px;
+          padding:32px 30px 36px;
           backdrop-filter:blur(14px);
           position:relative;
           animation:cardGlow 4s ease-in-out infinite alternate;
@@ -204,49 +204,49 @@ export default function HomePage() {
         .dc-br{bottom:8px;right:8px;border-width:0 2px 2px 0;}
 
         /* INPUTS */
-        .flabel{font-family:'Cinzel',serif;font-size:9px;letter-spacing:3px;color:rgba(201,162,39,.7);display:block;margin-bottom:6px;}
+        .flabel{font-family:'Cinzel',serif;font-size:11px;letter-spacing:3px;color:rgba(201,162,39,.7);display:block;margin-bottom:8px;}
         .finput{
           width:100%;background:rgba(255,255,255,.04);
-          border:1px solid rgba(201,162,39,.3);border-radius:10px;
-          padding:12px 14px;color:#f0ebe0;font-size:14px;outline:none;
+          border:1px solid rgba(201,162,39,.3);border-radius:12px;
+          padding:16px 18px;color:#f0ebe0;font-size:16px;outline:none;
           transition:border-color .2s,box-shadow .2s;
         }
         .finput:focus{border-color:#c9a227;box-shadow:0 0 0 2px rgba(201,162,39,.12);}
         .finput::placeholder{color:#4a3a2a;}
 
         /* TOP ROW: ชื่อ + เลขจดหมาย */
-        .top-row{display:grid;grid-template-columns:3fr 1.1fr;gap:10px;margin-bottom:12px;}
+        .top-row{display:grid;grid-template-columns:3fr 1.1fr;gap:16px;margin-bottom:18px;}
 
         /* MAIN GRID: บ้าน | ตำแหน่ง | ปี */
-        .form-grid{display:grid;grid-template-columns:2fr 1.3fr 2fr;gap:10px;margin-bottom:14px;}
+        .form-grid{display:grid;grid-template-columns:2fr 1.3fr 2fr;gap:16px;margin-bottom:20px;}
 
         /* HOUSES */
-        .houses{display:grid;grid-template-columns:1fr 1fr;gap:7px;}
+        .houses{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
         .house-btn{
-          border:2px solid transparent;border-radius:11px;
-          padding:8px 4px;cursor:pointer;
-          display:flex;flex-direction:column;align-items:center;gap:4px;
+          border:2px solid transparent;border-radius:14px;
+          padding:16px 8px;cursor:pointer;
+          display:flex;flex-direction:column;align-items:center;gap:8px;
           transition:all .22s;opacity:.45;
-          min-height:82px;justify-content:center;
+          min-height:140px;justify-content:center;
         }
         .house-btn.sel{
           opacity:1;filter:brightness(1.15);
           box-shadow:0 0 22px rgba(255,255,255,.25),0 0 30px rgba(201,162,39,.2);
         }
         .house-btn:not(.sel):hover{opacity:.72;}
-        .house-logo{width:40px;height:40px;object-fit:contain;}
-        .house-name{font-family:'Cinzel',serif;font-size:9px;font-weight:600;letter-spacing:1px;line-height:1.2;text-align:center;}
-        .house-thai{font-size:10px;opacity:.8;text-align:center;}
+        .house-logo{width:64px;height:64px;object-fit:contain;}
+        .house-name{font-family:'Cinzel',serif;font-size:13px;font-weight:600;letter-spacing:1px;line-height:1.2;text-align:center;}
+        .house-thai{font-size:12px;opacity:.8;text-align:center;}
 
         /* MIDDLE COL: Professor + กรอกเอง */
-        .mid-col{display:flex;flex-direction:column;gap:7px;}
+        .mid-col{display:flex;flex-direction:column;gap:12px;}
         .prof-btn{
-          width:100%;padding:11px 6px;
-          border:1px solid rgba(201,162,39,.22);border-radius:10px;
+          width:100%;padding:22px 10px;
+          border:1px solid rgba(201,162,39,.22);border-radius:12px;
           background:rgba(255,255,255,.03);
           color:rgba(201,162,39,.4);
-          font-size:10px;font-family:'Cinzel',serif;
-          cursor:pointer;transition:all .18s;text-align:center;letter-spacing:1.5px;
+          font-size:14px;font-family:'Cinzel',serif;
+          cursor:pointer;transition:all .18s;text-align:center;letter-spacing:2px;
         }
         .prof-btn.sel{
           background:rgba(201,162,39,.22);border-color:#c9a227;color:#f0e8c0;
@@ -254,24 +254,24 @@ export default function HomePage() {
           text-shadow:0 0 10px rgba(201,162,39,.6);font-weight:700;
         }
         .custom-yr{
-          width:100%;padding:9px 10px;
+          width:100%;padding:14px 14px;
           background:rgba(255,255,255,.03);
-          border:1px solid rgba(201,162,39,.2);border-radius:10px;
-          color:#f0ebe0;font-size:12px;font-family:'Noto Serif Thai',serif;
+          border:1px solid rgba(201,162,39,.2);border-radius:12px;
+          color:#f0ebe0;font-size:14px;font-family:'Noto Serif Thai',serif;
           outline:none;transition:border-color .2s;
         }
         .custom-yr:focus{border-color:rgba(201,162,39,.6);box-shadow:0 0 0 2px rgba(201,162,39,.1);}
-        .custom-yr::placeholder{color:#3a2e20;font-size:11px;}
+        .custom-yr::placeholder{color:#3a2e20;font-size:13px;}
 
         /* YEAR BUTTONS 2-col */
-        .year-btns{display:grid;grid-template-columns:1fr 1fr;gap:5px;}
+        .year-btns{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
         .ybtn{
-          padding:8px 3px;
-          border:1px solid rgba(201,162,39,.2);border-radius:8px;
+          padding:16px 6px;
+          border:1px solid rgba(201,162,39,.2);border-radius:10px;
           background:rgba(255,255,255,.02);
           color:rgba(201,162,39,.38);
-          font-size:9px;font-family:'Cinzel',serif;
-          cursor:pointer;transition:all .18s;text-align:center;letter-spacing:.5px;
+          font-size:13px;font-family:'Cinzel',serif;
+          cursor:pointer;transition:all .18s;text-align:center;letter-spacing:1px;
         }
         .ybtn.sel{
           background:rgba(201,162,39,.22);border-color:#c9a227;color:#f0e8c0;
@@ -284,10 +284,10 @@ export default function HomePage() {
 
         /* SUBMIT */
         .submit-btn{
-          width:100%;padding:16px;
+          width:100%;padding:20px;
           background:linear-gradient(135deg,#4a1e06,#c9a227 40%,#e8c060 50%,#c9a227 60%,#4a1e06);
-          border:none;border-radius:12px;
-          color:#0a0500;font-size:14px;font-family:'Cinzel',serif;font-weight:700;letter-spacing:3px;
+          border:none;border-radius:14px;
+          color:#0a0500;font-size:16px;font-family:'Cinzel',serif;font-weight:700;letter-spacing:3px;
           cursor:pointer;transition:all .2s;
           box-shadow:0 4px 24px rgba(201,162,39,.35);
         }
