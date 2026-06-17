@@ -108,7 +108,7 @@ export default function CardPage() {
         /* YEAR — บนกรอบบ้าน */
         .ov-year{
           position:absolute;
-          top:61%;left:50%;transform:translate(-50%,-50%);
+          top:60%;left:50%;transform:translate(-50%,-50%);
           width:70%;text-align:center;
           font-family:'Cinzel',serif;
           font-size:clamp(8px,2.6vw,12px);
@@ -180,7 +180,7 @@ export default function CardPage() {
                 {houseLogo && (
                   <img src={houseLogo} alt={data.houseName}/>
                 )}
-                <div className="ov-house-name" style={{ color: data.houseTextColor, textShadow:`0 0 10px ${data.houseAccent}80` }}>
+                <div className="ov-house-name" style={{ color:'#A89060', textShadow:'0 0 10px rgba(164,136,96,.5)' }}>
                   {data.houseName}
                 </div>
               </div>
