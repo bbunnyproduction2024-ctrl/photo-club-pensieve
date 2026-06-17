@@ -11,7 +11,7 @@ export default function AudioManager() {
     if (audioRef.current) return;
     const audio = new Audio('/Photo_Club/background%20music.mp3');
     audio.loop = true;
-    audio.volume = 0.12;
+    audio.volume = 0.05;
     audioRef.current = audio;
 
     const start = () => audio.play().catch(() => {});
