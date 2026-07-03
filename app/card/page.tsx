@@ -315,10 +315,10 @@ export default function CardPage() {
               <div className="ov-venue">{VENUE}</div>
 
               {/* วันที่ */}
-              <div className="ov-date">รอวันที่</div>
+              <div className="ov-date">วันที่ 22 กรกฎาคม 2026</div>
 
               {/* เวลา */}
-              <div className="ov-time">รอเวลา</div>
+              <div className="ov-time">เวลา 21:00 น.</div>
 
               {/* บ้าน */}
               <div className="ov-house">

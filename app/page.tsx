@@ -4,9 +4,9 @@ import { useRouter } from 'next/navigation';
 
 const EVENT = {
   sub: 'อ่างแห่งความทรงจำ',
-  date: 'รอวันที่',
+  date: 'วันที่ 22 กรกฎาคม 2026',
   venue: 'ห้องนิทรรศการภาพถ่าย',
-  time: 'รอเวลา',
+  time: 'เวลา 21:00 น.',
 };
 
 const HOUSES = [
