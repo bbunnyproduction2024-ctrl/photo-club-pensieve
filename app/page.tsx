@@ -14,6 +14,7 @@ const HOUSES = [
   { id: 'hufflepuff', name: 'Hufflepuff', thai: 'ฮัฟเฟิลพัฟ', bg: '#C49A00', accent: '#372E29', textColor: '#1a1208', logo: '/Photo_Club/logo_Hufflepuff.png' },
   { id: 'ravenclaw', name: 'Ravenclaw', thai: 'เรเวนคลอว์', bg: '#0E1A40', accent: '#946B2D', textColor: '#A89060', logo: '/Photo_Club/logo_Ravenclaw.png' },
   { id: 'slytherin', name: 'Slytherin', thai: 'สลิธีริน', bg: '#1A472A', accent: '#AAAAAA', textColor: '#CCCCCC', logo: '/Photo_Club/logo_Slytherin.png' },
+  { id: 'Professor', name: 'Professor', thai: 'บุคลากร', bg: '#8B4513', accent: '#372E29', textColor: '#CCCCCC', logo: '/Photo_Club/logo_Hogwarts.png' }
 ];
 
 const YEAR_BTNS = ['Year 1','Year 5','Year 2','Year 6','Year 3','Year 7','Year 4'];
