@@ -30,6 +30,7 @@ const HOUSE_LOGO: Record<string, string> = {
   hufflepuff: '/Photo_Club/logo_Hufflepuff.png',
   ravenclaw: '/Photo_Club/logo_Ravenclaw.png',
   slytherin: '/Photo_Club/logo_Slytherin.png',
+  Professor: '/Photo_Club/logo_Hogwarts.png'
 };
 
 export default function CardPage() {
